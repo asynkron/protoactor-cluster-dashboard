@@ -1,0 +1,40 @@
+<button @onclick="Toggle" class="btn  btn-sm btn-primary">
+    <div style="font-size: 10px; width: 10px;height: 20px;display: inline-block">
+    @if (Expanded)
+    {
+        <span class="oi oi-caret-bottom" aria-hidden="true"></span>
+    }
+    else
+    {
+        <span class="oi oi-caret-right" aria-hidden="true"></span>
+    }
+    </div>
+</button>
+<span style="padding-left: 16px">
+    <b>
+        @Text
+    </b>
+</span>
+
+@if (Expanded)
+{
+    <div style="padding-top: 8px">
+        @ChildContent
+    </div>
+}
+@code {
+
+    [Parameter]
+    public bool Expanded { get; set; }
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    [Parameter]
+    public string Text { get; set; }
+    
+    private void Toggle()
+    {
+        Expanded = !Expanded;
+    }
+}

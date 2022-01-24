@@ -1,0 +1,136 @@
+@page "/counter"
+@using Proto.Cluster.Gossip
+@inject ActorSystem System
+<PageTitle>Counter</PageTitle>
+<style>
+    .box {
+        border:1px solid #00000030;
+        padding: 4px;
+        margin-top: 2px;
+        margin-bottom: 2px;
+        border-radius: 3px;
+    }
+</style>
+
+<h2>Memberlist</h2>
+@if (_members != null)
+{
+    foreach (var m in _members)
+    {
+        <div>Member: @m.Id</div>
+    }
+}
+
+<h2>Gossip State</h2>
+@if (_state != null)
+{
+    var i = 0;
+    foreach (var x in _state.Members)
+    {
+        <div class="box" style="background-color:@GetColor(i)">
+            <ExpanderButton Text="@("Member State " + x.Key)">
+                @foreach (var y in x.Value.Values)
+                {
+                    <div class="box">
+                        <ExpanderButton Text="@($"State Key: {y.Key} - Version: {y.Value.SequenceNumber}")">
+
+                            @if (y.Key == "topology")
+                            {
+                                var topology = y.Value.Value.Unpack<ClusterTopology>();
+                        
+                                <div>
+                                    <b></b>
+                                </div>
+                                <div>Topology Hash: @topology.TopologyHash</div>
+                                @foreach (var m in topology.Members)
+                                {
+                                    <div class="box">
+                                        <dib>
+                                            <b>Member @m.Id</b>
+                                        </dib>
+                                        <div>Address: @m.Address</div>
+                                        <div>Kinds: @string.Join(", ", m.Kinds) </div>
+                                    </div>
+                                }
+                           
+                     
+                            }
+                            else if (y.Key == "heartbeat")
+                            {
+                                var heartbeat = y.Value.Value.Unpack<MemberHeartbeat>();
+         
+
+                                <div class="box">
+                                    <div>
+                                        <b>Actor Statistics</b>
+                                    </div>
+                                    @foreach (var k in heartbeat.ActorStatistics.ActorCount)
+                                    {
+                                        <div>Kind: @k.Key, Count @k.Value</div>
+                                    }
+                                </div>
+               
+                            }
+                            else
+                            {
+       
+                                <span>Type:</span> @y.Value.Value.TypeUrl
+                                <div>
+                                    <b>Key: @y.Key - Version: @y.Value.SequenceNumber</b>
+                                </div>
+                
+                            }
+                        </ExpanderButton>
+                    </div>
+                }
+            </ExpanderButton>
+
+        </div>
+        i++;
+    }
+}
+
+@code {
+    private GossipState? _state;
+    private readonly CancellationTokenSource _cts = new();
+    private bool _disposed;
+    private Member[] _members;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _ = Task.Run(async () =>
+        {
+            while (!_cts.Token.IsCancellationRequested)
+            {
+                _state = await System.Cluster().Gossip.GetStateSnapshot();
+                _members = System.Cluster().MemberList.GetAllMembers();
+                await InvokeAsync(StateHasChanged);
+                await Task.Delay(1000);
+            }
+        }, _cts.Token);
+        await base.OnInitializedAsync();
+    }
+
+    public void Dispose() => Dispose(true);
+
+    public void Dispose(bool disposing)
+    {
+        if (_disposed)
+        {
+            return;
+        }
+        if (disposing)
+        {
+            _cts.Cancel();
+        }
+        _disposed = true;
+    }
+
+    private string[] colors = { "#D5E8D4", "#E1D5E7", "#FFF2CC", "#ffff00", "#ff00ff", "#00ffff" };
+
+    private object GetColor(int i)
+    {
+        return colors[i % colors.Length];
+    }
+
+}
