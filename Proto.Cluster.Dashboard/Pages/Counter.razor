@@ -3,11 +3,12 @@
 @inject ActorSystem System
 <PageTitle>Counter</PageTitle>
 <style>
-    .box {
-        border:1px solid #00000030;
+    .box {        
+        border:1px solid #00000030;        
         padding: 4px;
         margin: 4px;
         border-radius: 3px;
+        background-color: #ffffff60;
     }
 </style>
 
@@ -83,7 +84,7 @@
                 _state = await System.Cluster().Gossip.GetStateSnapshot();
                 _members = System.Cluster().MemberList.GetAllMembers();
                 await InvokeAsync(StateHasChanged);
-                await Task.Delay(1000);
+                await Task.Delay(100);
             }
         }, _cts.Token);
         await base.OnInitializedAsync();
