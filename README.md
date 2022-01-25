@@ -1,1 +1,1 @@
-# protoactor-cluser-ui
+# protoactor-cluster-dashboard
