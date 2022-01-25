@@ -6,8 +6,7 @@
     .box {
         border:1px solid #00000030;
         padding: 4px;
-        margin-top: 2px;
-        margin-bottom: 2px;
+        margin: 4px;
         border-radius: 3px;
     }
 </style>
@@ -37,11 +36,15 @@
                             @if (y.Key == "topology")
                             {
                                 var topology = y.Value.Value.Unpack<ClusterTopology>();
-                        
                                 <div>
                                     <b></b>
                                 </div>
-                                <div>Topology Hash: @topology.TopologyHash</div>
+                                <div class="box">
+                                    <div>
+                                        <b>Topology Hash: @topology.TopologyHash</b>
+                                    </div>
+                                    <div>Blocked Members: @string.Join(", ", topology.Blocked)</div>
+                                </div>
                                 @foreach (var m in topology.Members)
                                 {
                                     <div class="box">
@@ -52,14 +55,10 @@
                                         <div>Kinds: @string.Join(", ", m.Kinds) </div>
                                     </div>
                                 }
-                           
-                     
                             }
                             else if (y.Key == "heartbeat")
                             {
                                 var heartbeat = y.Value.Value.Unpack<MemberHeartbeat>();
-         
-
                                 <div class="box">
                                     <div>
                                         <b>Actor Statistics</b>
@@ -69,16 +68,14 @@
                                         <div>Kind: @k.Key, Count @k.Value</div>
                                     }
                                 </div>
-               
                             }
                             else
                             {
-       
-                                <span>Type:</span> @y.Value.Value.TypeUrl
+                                <span>Type:</span>
+                                @y.Value.Value.TypeUrl
                                 <div>
                                     <b>Key: @y.Key - Version: @y.Value.SequenceNumber</b>
                                 </div>
-                
                             }
                         </ExpanderButton>
                     </div>
