@@ -1,8 +1,12 @@
 @using Google.Protobuf.WellKnownTypes
- <span>Type:</span>
-@Any.TypeUrl
+<div class="box">
+    <span>Type:</span>
+    @State.TypeUrl
+</div>
 
 @code {
+
     [Parameter]
-    public Any Any { get; set; }
+    public Any State { get; set; }
+
 }

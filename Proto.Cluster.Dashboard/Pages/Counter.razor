@@ -28,7 +28,7 @@
     {
         <div class="box" style="background-color:@GetColor(i)">
             <ExpanderButton Text="@("Member State " + x.Key)">
-                @foreach (var y in x.Value.Values)
+                @foreach (var y in x.Value.Values.OrderBy(v => v.Key))
                 {
                     <div class="box">
                         <ExpanderButton Text="@($"State Key: {y.Key} - Version: {y.Value.SequenceNumber} - Updated: {y.Value.LocalTimestamp}")">
@@ -36,17 +36,27 @@
                             @if (y.Key == "topology")
                             {
                                 var topology = y.Value.Value.Unpack<ClusterTopology>();
-                                <ClusterTopologyWidget Topology="topology"></ClusterTopologyWidget>
+                                <ClusterTopologyWidget State="topology"></ClusterTopologyWidget>
                             }
                             else if (y.Key == "heartbeat")
                             {
                                 var heartbeat = y.Value.Value.Unpack<MemberHeartbeat>();
-                                <MemberHeartbeatWidget Heartbeat="heartbeat"></MemberHeartbeatWidget>
+                                <MemberHeartbeatWidget State="heartbeat"></MemberHeartbeatWidget>
+                            }
+                            else if (y.Key == "reb:ready")
+                            {
+                                var m = y.Value.Value.Unpack<ReadyForRebalance>();
+                                <ReadyForRebalanceWidget State="m"></ReadyForRebalanceWidget>
+                            }
+                            else if (y.Key == "reb:done")
+                            {
+                                var m = y.Value.Value.Unpack<RebalanceCompleted>();
+                                <RebalanceCompletedWidget State="m"></RebalanceCompletedWidget>
                             }
                             else
                             {
                                 var any = y.Value.Value;
-                                <AnyStateWidget Any="any"></AnyStateWidget>
+                                <AnyStateWidget State="any"></AnyStateWidget>
                             }
                         </ExpanderButton>
                     </div>

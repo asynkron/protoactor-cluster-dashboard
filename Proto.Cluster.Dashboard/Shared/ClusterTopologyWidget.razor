@@ -1,10 +1,10 @@
 <div class="box">
     <div>
-        <b>Topology Hash: @Topology.TopologyHash</b>
+        <b>Topology Hash: @State.TopologyHash</b>
     </div>
-    <div>Blocked Members: @string.Join(", ", Topology.Blocked)</div>
+    <div>Blocked Members: @string.Join(", ", State.Blocked)</div>
 </div>
-@foreach (var m in Topology.Members)
+@foreach (var m in State.Members)
 {
     <div class="box">
         <dib>
@@ -16,6 +16,8 @@
 }
 
 @code {
+
     [Parameter]
-    public ClusterTopology Topology { get; set; }
+    public ClusterTopology State { get; set; }
+
 }
