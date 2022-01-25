@@ -1,8 +1,7 @@
-
 <style>
    .main {
      display:flex;
-     --s: 100px;  /* size  */
+     --s: 180px;  /* size  */
      --m: 4px;    /* margin */
      --f: calc(1.732 * var(--s) + 4 * var(--m)  - 1px);
    }
@@ -18,18 +17,23 @@
      display: inline-block;
      font-size:initial;
      clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
-     background: red;
+     background: #4a8b26;
      margin-bottom: calc(var(--m) - var(--s)*0.2885); 
      stroke: #0a53be;
    }
    
    .container .hex .hex-content {
+   white-space: nowrap;
+   font-size: small;
+   text-overflow: ellipsis;
+   color: white;
     position: absolute;
     padding: 10px;
-    border: 2px solid green;
+    padding-top:65px;
+    /*border: 2px solid green;*/
     height: inherit;
     width: inherit;
-    text-align: center;
+    text-align: left;
    }
 
    .container::before {
@@ -45,16 +49,25 @@
     
 </style>
 <div style="padding: 20px; margin: 20px">
-<div class="main">
-  <div class="container">
-    <div class="hex"><div class="hex-content">dssfsf</div></div>
-    <div class="hex"></div>
-    <div class="hex"></div>
-    <div class="hex"></div>
-    <div class="hex"></div>
-  </div>
+    <div class="main">
+        <div class="container">
+            @foreach (var member in Members)
+            {
+                <div class="hex">
+                    <div class="hex-content">
+                        <div>ID: @member.Id</div>
+                        <div>Address: @member.Address</div>
+                        <div><sub>Kinds: @string.Join(", ", member.Kinds)</sub></div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
 </div>
-</div>
+
 @code {
-    
+
+    [Parameter]
+    public Member[] Members { get; set; }
+
 }

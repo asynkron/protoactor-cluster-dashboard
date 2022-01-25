@@ -14,16 +14,7 @@
    
 </style>
 
-<Hexagons></Hexagons>
-
-<h2>Memberlist</h2>
-@if (_members != null)
-{
-    foreach (var m in _members)
-    {
-        <div>Member: @m.Id</div>
-    }
-}
+<Hexagons Members="_members"></Hexagons>
 
 <h2>Gossip State</h2>
 @if (_state != null)
