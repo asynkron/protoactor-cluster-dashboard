@@ -7,9 +7,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Proto.Cluster" Version="0.26.1-alpha.0.50" />
-      <PackageReference Include="Proto.Cluster.TestProvider" Version="0.26.1-alpha.0.50" />
-      <PackageReference Include="Proto.Remote.GrpcNet" Version="0.26.1-alpha.0.50" />
+        <PackageReference Include="Proto.Cluster" Version="0.26.1-alpha.0.50"/>
+        <PackageReference Include="Proto.Cluster.TestProvider" Version="0.26.1-alpha.0.50"/>
+        <PackageReference Include="Proto.Remote.GrpcNet" Version="0.26.1-alpha.0.50"/>
     </ItemGroup>
 
 </Project>

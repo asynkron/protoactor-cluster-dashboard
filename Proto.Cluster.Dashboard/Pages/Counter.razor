@@ -85,7 +85,10 @@
         await base.OnInitializedAsync();
     }
 
-    public void Dispose() => Dispose(true);
+    public void Dispose()
+    {
+        Dispose(true);
+    }
 
     public void Dispose(bool disposing)
     {
@@ -100,7 +103,7 @@
         _disposed = true;
     }
 
-    private string[] colors = { "#D5E8D4", "#E1D5E7", "#FFF2CC", "#ffff00", "#ff00ff", "#00ffff" };
+    private readonly string[] colors = { "#D5E8D4", "#E1D5E7", "#FFF2CC", "#ffff00", "#ff00ff", "#00ffff" };
 
     private object GetColor(int i)
     {

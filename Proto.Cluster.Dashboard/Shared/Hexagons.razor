@@ -22,18 +22,29 @@
      stroke: #0a53be;
    }
    
-   .container .hex .hex-content {
-   white-space: nowrap;
-   font-size: small;
-   text-overflow: ellipsis;
-   color: white;
+   .container .hex .hex-border {
+        position: relative;
+       height: inherit;
+       width: inherit;
+       display: inline-block;       
+   }
+   .container .hex .hex-border .hex-content {
+   padding-top: 65px;
+   padding-left: 10px;
     position: absolute;
-    padding: 10px;
-    padding-top:65px;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    
+    background-color: #5baa2f;
+    font-size: small;
+    text-overflow: ellipsis;
+    color: white;
+    
+    clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
     /*border: 2px solid green;*/
-    height: inherit;
-    width: inherit;
-    text-align: left;
+
    }
 
    .container::before {
@@ -54,10 +65,14 @@
             @foreach (var member in Members)
             {
                 <div class="hex">
-                    <div class="hex-content">
-                        <div>ID: @member.Id</div>
-                        <div>Address: @member.Address</div>
-                        <div><sub>Kinds: @string.Join(", ", member.Kinds)</sub></div>
+                    <div class="hex-border">
+                        <div class="hex-content">
+                            <div>ID: @member.Id.Substring(0, 15) ...</div>
+                            <div>Address: @member.Address</div>
+                            <div>
+                                <sub>Kinds: @string.Join(", ", member.Kinds)</sub>
+                            </div>
+                        </div>
                     </div>
                 </div>
             }
