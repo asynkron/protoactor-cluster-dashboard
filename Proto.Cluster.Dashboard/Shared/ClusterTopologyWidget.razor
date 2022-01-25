@@ -1,0 +1,21 @@
+<div class="box">
+    <div>
+        <b>Topology Hash: @Topology.TopologyHash</b>
+    </div>
+    <div>Blocked Members: @string.Join(", ", Topology.Blocked)</div>
+</div>
+@foreach (var m in Topology.Members)
+{
+    <div class="box">
+        <dib>
+            <b>Member @m.Id</b>
+        </dib>
+        <div>Address: @m.Address</div>
+        <div>Kinds: @string.Join(", ", m.Kinds) </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public ClusterTopology Topology { get; set; }
+}

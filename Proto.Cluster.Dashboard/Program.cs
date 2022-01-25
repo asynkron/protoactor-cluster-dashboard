@@ -1,11 +1,12 @@
 using Proto;
 using Proto.Cluster;
-using Proto.Cluster.PartitionActivator;
+using Proto.Cluster.Identity;
+using Proto.Cluster.Partition;
 using Proto.Cluster.Testing;
 using Proto.Remote.GrpcNet;
 
 var agent = new InMemAgent();
-var lookup = new PartitionActivatorLookup();
+var lookup = new PartitionIdentityLookup();
 var system = await GetSystem(agent, lookup);
 var system2 = await GetSystem(agent, lookup);
 var system3 = await GetSystem(agent, lookup);
@@ -32,10 +33,10 @@ app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
 app.Run();
 
-async Task<ActorSystem> GetSystem(InMemAgent agent, PartitionActivatorLookup partitionActivatorLookup)
+async Task<ActorSystem> GetSystem(InMemAgent agent, IIdentityLookup identityLookup)
 {
     var provider = new TestProvider(new TestProviderOptions(), agent);
-    var actorSystem = new ActorSystem().WithRemote(GrpcNetRemoteConfig.BindToLocalhost()).WithCluster(ClusterConfig.Setup("cluster", provider, partitionActivatorLookup).WithClusterKind("SomeKind", Props.Empty).WithClusterKind("SomeOtherKind", Props.Empty));
+    var actorSystem = new ActorSystem().WithRemote(GrpcNetRemoteConfig.BindToLocalhost()).WithCluster(ClusterConfig.Setup("cluster", provider, identityLookup).WithClusterKind("SomeKind", Props.Empty).WithClusterKind("SomeOtherKind", Props.Empty));
     await actorSystem.Cluster().StartMemberAsync();
     return actorSystem;
 }

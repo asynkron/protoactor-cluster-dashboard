@@ -1,0 +1,8 @@
+@using Google.Protobuf.WellKnownTypes
+ <span>Type:</span>
+@Any.TypeUrl
+
+@code {
+    [Parameter]
+    public Any Any { get; set; }
+}

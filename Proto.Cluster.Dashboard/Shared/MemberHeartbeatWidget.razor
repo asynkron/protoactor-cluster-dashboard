@@ -1,0 +1,13 @@
+<div class="box">
+    <div>
+        <b>Actor Statistics</b>
+    </div>
+    @foreach (var k in Heartbeat.ActorStatistics.ActorCount)
+    {
+        <div>Kind: @k.Key, Count @k.Value</div>
+    }
+</div>
+@code {
+    [Parameter]
+    public MemberHeartbeat Heartbeat { get; set; }
+}
