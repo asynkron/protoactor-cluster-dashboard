@@ -14,7 +14,7 @@
    
 </style>
 
-<Hexagons Members="_members"></Hexagons>
+
 
 <h2>Gossip State</h2>
 @if (_state != null)
@@ -23,41 +23,7 @@
     foreach (var x in _state.Members)
     {
         <div class="box" style="background-color:@GetColor(i)">
-            <ExpanderButton Text="@("Member State " + x.Key)">
-                @foreach (var y in x.Value.Values.OrderBy(v => v.Key))
-                {
-                    <div class="box">
-                        <ExpanderButton Text="@($"State Key: {y.Key} - Version: {y.Value.SequenceNumber} - Updated: {y.Value.LocalTimestamp}")">
-
-                            @if (y.Key == "topology")
-                            {
-                                var topology = y.Value.Value.Unpack<ClusterTopology>();
-                                <ClusterTopologyWidget State="topology"></ClusterTopologyWidget>
-                            }
-                            else if (y.Key == "heartbeat")
-                            {
-                                var heartbeat = y.Value.Value.Unpack<MemberHeartbeat>();
-                                <MemberHeartbeatWidget State="heartbeat"></MemberHeartbeatWidget>
-                            }
-                            else if (y.Key == "reb:ready")
-                            {
-                                var m = y.Value.Value.Unpack<ReadyForRebalance>();
-                                <ReadyForRebalanceWidget State="m"></ReadyForRebalanceWidget>
-                            }
-                            else if (y.Key == "reb:done")
-                            {
-                                var m = y.Value.Value.Unpack<RebalanceCompleted>();
-                                <RebalanceCompletedWidget State="m"></RebalanceCompletedWidget>
-                            }
-                            else
-                            {
-                                var any = y.Value.Value;
-                                <AnyStateWidget State="any"></AnyStateWidget>
-                            }
-                        </ExpanderButton>
-                    </div>
-                }
-            </ExpanderButton>
+            <MemberStateWidget MemberId="@x.Key" State="@x.Value"></MemberStateWidget>
 
         </div>
         i++;
@@ -103,11 +69,10 @@
         _disposed = true;
     }
 
-    private readonly string[] colors = { "#D5E8D4", "#E1D5E7", "#FFF2CC", "#ffff00", "#ff00ff", "#00ffff" };
+    private readonly string[] colors = { "#D5E8D4", "#E1D5E7", "#FFF2CC", "#DAE8FC" };
 
     private object GetColor(int i)
     {
         return colors[i % colors.Length];
     }
-
 }

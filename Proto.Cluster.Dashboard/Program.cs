@@ -8,8 +8,13 @@ using Proto.Remote.GrpcNet;
 var agent = new InMemAgent();
 var lookup = new PartitionIdentityLookup();
 var system = await GetSystem(agent, lookup);
-var system2 = await GetSystem(agent, lookup);
-var system3 = await GetSystem(agent, lookup);
+
+for (int i = 0; i < 3; i++)
+{
+    GetSystem(agent, lookup);    
+}
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
