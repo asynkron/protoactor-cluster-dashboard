@@ -1,4 +1,5 @@
-<button @onclick="Toggle" class="btn  btn-sm btn-primary">
+<div>
+<MatButton @onclick="Toggle" Raised="true">
     <div style="font-size: 10px; width: 10px;height: 10px;display: inline-block">
         @if (Expanded)
         {
@@ -9,7 +10,8 @@
             <span class="oi oi-caret-right" aria-hidden="true"></span>
         }
     </div>
-</button>
+</MatButton>
+</div>
 <span style="padding-left: 16px">
     <b>
         @Text

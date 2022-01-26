@@ -6,13 +6,13 @@
 </div>
 @foreach (var m in State.Members)
 {
-    <div class="box">
+    <MatPaper Elevation="2">
         <dib>
             <b>Member @m.Id</b>
         </dib>
         <div>Address: @m.Address</div>
         <div>Kinds: @string.Join(", ", m.Kinds) </div>
-    </div>
+    </MatPaper>
 }
 
 @code {

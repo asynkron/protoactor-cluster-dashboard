@@ -2,32 +2,20 @@
 @using Proto.Cluster.Gossip
 @inject ActorSystem System
 <PageTitle>Counter</PageTitle>
-<style>
-    .box {        
-        border:1px solid #00000030;        
-        padding: 4px;
-        margin: 4px;
-        border-radius: 3px;
-        background-color: #ffffff60;
-        font-size: small;
-    }
-   
-</style>
-
+<MatPortalHost></MatPortalHost>
 
 
 <h2>Gossip State</h2>
 @if (_state != null)
 {
-    var i = 0;
-    foreach (var x in _state.Members)
-    {
-        <div class="box" style="background-color:@GetColor(i)">
+    <MatTabGroup>
+        @foreach (var x in _state.Members)
+        {
+        <MatTab Label="@(x.Key)">
             <MemberStateWidget MemberId="@x.Key" State="@x.Value"></MemberStateWidget>
-
-        </div>
-        i++;
-    }
+        </MatTab>
+        }
+    </MatTabGroup>
 }
 
 @code {
@@ -75,4 +63,5 @@
     {
         return colors[i % colors.Length];
     }
+
 }
