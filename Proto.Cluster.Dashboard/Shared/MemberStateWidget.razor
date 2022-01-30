@@ -1,14 +1,40 @@
 @using Proto.Cluster.Gossip
-<div style="display: block">
-    
-    <MatAccordion>
-        @foreach (var stateEntry in State.Values.OrderBy(v => v.Key))
-        {
-            
-            <MemberStateEntryWidget Key="@stateEntry.Key" State="stateEntry.Value"></MemberStateEntryWidget>
-        }
-    </MatAccordion>
-</div>
+<ExpanderButton Text="@($"Member State {MemberId}")">
+    @foreach (var stateEntry in State.Values.OrderBy(v => v.Key))
+    {
+        <div class="box">
+            <ExpanderButton Text="@($"State Key: {stateEntry.Key} - Version: {stateEntry.Value.SequenceNumber} - Updated: {stateEntry.Value.LocalTimestamp}")">
+
+                @if (stateEntry.Key == "topology")
+                {
+                    var topology = stateEntry.Value.Value.Unpack<ClusterTopology>();
+                    <ClusterTopologyWidget State="topology"></ClusterTopologyWidget>
+                }
+                else if (stateEntry.Key == "heartbeat")
+                {
+                    var heartbeat = stateEntry.Value.Value.Unpack<MemberHeartbeat>();
+                    <MemberHeartbeatWidget State="heartbeat"></MemberHeartbeatWidget>
+                }
+                else if (stateEntry.Key == "reb:ready")
+                {
+                    var m = stateEntry.Value.Value.Unpack<ReadyForRebalance>();
+                    <ReadyForRebalanceWidget State="m"></ReadyForRebalanceWidget>
+                }
+                else if (stateEntry.Key == "reb:done")
+                {
+                    var m = stateEntry.Value.Value.Unpack<RebalanceCompleted>();
+                    <RebalanceCompletedWidget State="m"></RebalanceCompletedWidget>
+                }
+                else
+                {
+                    var any = stateEntry.Value.Value;
+                    <AnyStateWidget State="any"></AnyStateWidget>
+                }
+            </ExpanderButton>
+        </div>
+    }
+</ExpanderButton>
+
 @code {
 
     [Parameter]
