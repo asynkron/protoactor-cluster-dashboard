@@ -6,7 +6,7 @@
     <MatAppBar Fixed="true">
         <MatAppBarRow>
             <MatAppBarSection>
-                <MatIconButton Icon="menu"></MatIconButton>
+                <MatIconButton Icon="menu"  OnClick="@((e) => ButtonClicked())"></MatIconButton>
                 <MatAppBarTitle>MatBlazor - Material Design components for Blazor</MatAppBarTitle>
             </MatAppBarSection>
             <MatAppBarSection Align="@MatAppBarSectionAlign.End">
@@ -17,11 +17,29 @@
  
     <MatAppBarContent>
             
+        <MatDrawerContainer Style="width: 100vw; height: 100vh;">
+            <MatDrawer @bind-Opened="@Opened">
                 <NavMenu/>
- 
-
+            </MatDrawer>
+            <MatDrawerContent>
                 @Body
-
+            </MatDrawerContent>
+        </MatDrawerContainer>
+        
+        
+ 
+                
 
     </MatAppBarContent>
 </MatAppBarContainer>
+
+@code
+{
+    bool Opened = true;
+ 
+    void ButtonClicked()
+    {
+        Opened = !Opened;
+    }
+ 
+}
