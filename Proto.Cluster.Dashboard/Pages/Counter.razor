@@ -4,28 +4,27 @@
 <PageTitle>Counter</PageTitle>
 <style>
     .box {        
-        border:1px solid #00000030;        
+        border:1px solid #ffffff30;        
         padding: 4px;
         margin: 4px;
         border-radius: 3px;
-        background-color: #ffffff60;
         font-size: small;
     }
    
 </style>
 
 
+<MudText Typo="Typo.h2">Gossip State</MudText>
 
-<h2>Gossip State</h2>
 @if (_state != null)
 {
     var i = 0;
     foreach (var x in _state.Members)
     {
-        <div class="box" style="background-color:@GetColor(i)">
+        <MudPaper Class="pa-4 my-2">
             <MemberStateWidget MemberId="@x.Key" State="@x.Value"></MemberStateWidget>
 
-        </div>
+        </MudPaper>
         i++;
     }
 }
@@ -69,10 +68,4 @@
         _disposed = true;
     }
 
-    private readonly string[] colors = { "#D5E8D4", "#E1D5E7", "#FFF2CC", "#DAE8FC" };
-
-    private object GetColor(int i)
-    {
-        return colors[i % colors.Length];
-    }
 }
