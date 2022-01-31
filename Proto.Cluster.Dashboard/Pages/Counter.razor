@@ -3,8 +3,7 @@
 @inject ActorSystem System
 <PageTitle>Counter</PageTitle>
 <style>
-    .box {        
-        border:1px solid #ffffff30;        
+    .box {             
         padding: 4px;
         margin: 4px;
         border-radius: 3px;
@@ -12,28 +11,57 @@
     }
    
 </style>
+<MudGrid Spacing="6">
+    <MudItem xs="5">
+        <MudTextField Adornment="Adornment.End" AdornmentIcon="@Icons.Filled.Search" @bind-Value="_search" Label="Search" Variant="Variant.Filled"></MudTextField>
+        @if (_members != null)
+        {
+            foreach (var member in SearchMembers())
+            {
+                <MudCard Class="my-2" Style="@(member.Id == _member?.Id ? "border: 2px solid " + Theme.Palette.PrimaryLighten : "")" Outlined="true">
+                    <MudCardHeader>
+                        <CardHeaderAvatar>
+                            <MudAvatar Color="Color.Success"><MudIcon Icon="@Icons.Material.Filled.Favorite"/></MudAvatar>
+                        </CardHeaderAvatar>
+                        <CardHeaderContent>
+                            <MudText Typo="Typo.body1">@member.Id</MudText>
+                            <MudText Typo="Typo.body2">Address: @member.Address</MudText>
+                            <MudText Typo="Typo.body2">Kinds: @string.Join(", ", member.Kinds)</MudText>
+                        </CardHeaderContent>
+                        <CardHeaderActions>
+                            <MudIconButton Icon="@Icons.Material.Filled.Settings" Color="Color.Default"/>
+                        </CardHeaderActions>
+                    </MudCardHeader>
+                </MudCard>
+            }
+        }
 
+    </MudItem>
+    <MudItem xs="7">
 
-<MudText Typo="Typo.h2">Gossip State</MudText>
+        @if (_state != null)
+        {
+            foreach (var x in _state.Members.Where(i => i.Key == _member?.Id))
+            {
+                <MudCard Class="my-2" Outlined="true">
+                    <MudCardContent>
+                        <MemberStateWidget MemberId="@x.Key" State="@x.Value"></MemberStateWidget>
+                    </MudCardContent>
+                </MudCard>
+            }
+        }
 
-@if (_state != null)
-{
-    var i = 0;
-    foreach (var x in _state.Members)
-    {
-        <MudPaper Class="pa-4 my-2">
-            <MemberStateWidget MemberId="@x.Key" State="@x.Value"></MemberStateWidget>
-
-        </MudPaper>
-        i++;
-    }
-}
+    </MudItem>
+</MudGrid>
 
 @code {
     private GossipState? _state;
     private readonly CancellationTokenSource _cts = new();
     private bool _disposed;
-    private Member[] _members;
+    private Member[]? _members;
+    private Member? _member;
+    private MudTheme Theme = new MudTheme();
+    private string _search = "";
 
     protected override async Task OnInitializedAsync()
     {
@@ -43,6 +71,7 @@
             {
                 _state = await System.Cluster().Gossip.GetStateSnapshot();
                 _members = System.Cluster().MemberList.GetAllMembers();
+                _member = _members.First();
                 await InvokeAsync(StateHasChanged);
                 await Task.Delay(100);
             }
@@ -67,5 +96,8 @@
         }
         _disposed = true;
     }
+
+    private IEnumerable<Member> SearchMembers() => 
+        _members.Where(m => m.Id.Contains(_search) || m.Address.Contains(_search));
 
 }
