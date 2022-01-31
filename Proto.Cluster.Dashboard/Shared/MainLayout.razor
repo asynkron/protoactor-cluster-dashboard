@@ -1,32 +1,33 @@
 ﻿@inherits LayoutComponentBase
 
 <PageTitle>Proto.Cluster.Dashboard</PageTitle>
-<MudThemeProvider/>
+<MudThemeProvider IsDarkMode="true"/>
 <MudDialogProvider/>
 <MudSnackbarProvider/>
 
 <MudLayout>
     <MudAppBar>
-        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => ButtonClicked())" />
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => ToggleDrawer())" />
         My Application
     </MudAppBar>
-    <MudDrawer @bind-Open="@Opened">
+    <MudDrawer @bind-Open="@_open" ClipMode="DrawerClipMode.Always" Elevation="2">
          <NavMenu/>
     </MudDrawer>
     <MudMainContent>
+        <MudContainer >
         @Body
+        </MudContainer>
     </MudMainContent>
 </MudLayout>
 
 @code
 {
 
+    bool _open = true;
 
-    bool Opened = true;
-
-    void ButtonClicked()
+    void ToggleDrawer()
     {
-        Opened = !Opened;
+        _open = !_open;
     }
 
 }
