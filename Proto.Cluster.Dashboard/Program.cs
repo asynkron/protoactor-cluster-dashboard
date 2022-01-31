@@ -1,10 +1,10 @@
-using MatBlazor;
 using Proto;
 using Proto.Cluster;
 using Proto.Cluster.Identity;
 using Proto.Cluster.Partition;
 using Proto.Cluster.Testing;
 using Proto.Remote.GrpcNet;
+using MudBlazor.Services;
 
 var agent = new InMemAgent();
 var lookup = new PartitionIdentityLookup();
@@ -16,13 +16,16 @@ for (int i = 0; i < 3; i++)
 }
 
 
+
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton(system);
-builder.Services.AddMatBlazor();
+builder.Services.AddMudServices();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
