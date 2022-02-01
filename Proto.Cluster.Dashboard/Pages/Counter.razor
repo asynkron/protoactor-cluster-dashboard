@@ -15,10 +15,11 @@
     <MudItem xs="5">
         <MudTextField Adornment="Adornment.End" 
                       AdornmentIcon="@Icons.Filled.Search"
-                      Label="Search" 
+                      Label="_search" 
                       Variant="Variant.Filled" 
-                      @bind-Value="@_search" 
-                      @bind-Value:event="oninput"
+                      @bind-Value="_search" 
+                      DebounceInterval="10"
+                      OnDebounceIntervalElapsed="UpdateSearch"
         ></MudTextField>
         @if (_members != null)
         {
@@ -108,7 +109,7 @@
     private IEnumerable<Member> SearchMembers() => 
         _members.Where(m => m.Id.Contains(_search) || m.Address.Contains(_search));
 
-    private async Task OnKeyPress()
+    private async Task UpdateSearch()
     {
         await InvokeAsync(StateHasChanged);
     }
