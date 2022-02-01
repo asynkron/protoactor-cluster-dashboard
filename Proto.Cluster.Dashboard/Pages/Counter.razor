@@ -56,7 +56,7 @@
         {
             var memberState = _state.Members[_member.Id];
             
-            <MudText>Member State @_member.Id</MudText>
+            <MudText Color="Color.Default" Typo="Typo.h5"><MudIcon Size="Size.Large" Icon="@Icons.TwoTone.GroupWork" /> Member @_member.Id</MudText>
             <MudCard Class="my-2" Outlined="true">
                 <MudCardContent>
                     <MemberStateWidget MemberId="@_member.Id" State="@memberState"></MemberStateWidget>

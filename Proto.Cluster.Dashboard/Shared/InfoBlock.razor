@@ -1,0 +1,8 @@
+<MudAlert Severity="Severity.Warning" Class="my-2 "  NoIcon Elevation="2">
+        @ChildContent
+</MudAlert>
+
+@code {
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+}

@@ -1,18 +1,18 @@
-<div class="box">
+<InfoBlock>
     <div>
         <b>Topology Hash: @State.TopologyHash</b>
     </div>
     <div>Blocked Members: @string.Join(", ", State.Blocked)</div>
-</div>
+</InfoBlock>
 @foreach (var m in State.Members)
 {
-    <div class="box">
+    <InfoBlock>
         <dib>
             <b>Member @m.Id</b>
         </dib>
         <div>Address: @m.Address</div>
         <div>Kinds: @string.Join(", ", m.Kinds) </div>
-    </div>
+    </InfoBlock>
 }
 
 @code {
