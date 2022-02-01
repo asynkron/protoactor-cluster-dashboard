@@ -21,43 +21,48 @@
                       DebounceInterval="100"
                       OnDebounceIntervalElapsed="UpdateSearch"
         ></MudTextField>
+        
+        
         @if (_members != null)
         {
+            <div class="mt-2 mb-4">Showing @(SearchMembers().Count()) of @(_members.Count()) members</div>
+            
             foreach (var member in SearchMembers())
             {
                 <div @onclick="() => _member=member">
-        <MudCard Class="my-2" Style="@(member.Id == _member?.Id ? "border: 2px solid " + Theme.Palette.PrimaryLighten : "")" Outlined="true">
-            <MudCardHeader>
-                <CardHeaderAvatar>
-                    <MudAvatar Color="Color.Success"><MudIcon Icon="@Icons.Material.Filled.Favorite"/></MudAvatar>
-                </CardHeaderAvatar>
-                <CardHeaderContent>
-                    <MudText Typo="Typo.body1">@member.Id</MudText>
-                    <MudText Typo="Typo.body2">Address: @member.Address</MudText>
-                    <MudText Typo="Typo.body2">Kinds: @string.Join(", ", member.Kinds)</MudText>
-                </CardHeaderContent>
-                <CardHeaderActions>
-                    <MudIconButton Icon="@Icons.Material.Filled.Settings" Color="Color.Default"/>
-                </CardHeaderActions>
-            </MudCardHeader>
-        </MudCard>
-        </div>
+                    <MudCard Class="my-2" Style="@(member.Id == _member?.Id ? "border: 2px solid " + Theme.Palette.PrimaryLighten : "")" Outlined="true">
+                        <MudCardHeader>
+                            <CardHeaderAvatar>
+                                <MudAvatar Color="Color.Success"><MudIcon Icon="@Icons.Material.Filled.Favorite"/></MudAvatar>
+                            </CardHeaderAvatar>
+                            <CardHeaderContent>
+                                <MudText Typo="Typo.body1">@member.Id</MudText>
+                                <MudText Typo="Typo.body2">Address: @member.Address</MudText>
+                                <MudText Typo="Typo.body2">Kinds: @string.Join(", ", member.Kinds)</MudText>
+                            </CardHeaderContent>
+                            <CardHeaderActions>
+                                <MudIconButton Icon="@Icons.Material.Filled.Settings" Color="Color.Default"/>
+                            </CardHeaderActions>
+                        </MudCardHeader>
+                    </MudCard>
+                </div>
             }
         }
 
     </MudItem>
     <MudItem xs="7">
-
-        @if (_state != null)
+        
+        @if (_state != null && _member != null)
         {
-            foreach (var x in _state.Members.Where(i => i.Key == _member?.Id))
-            {
-                <MudCard Class="my-2" Outlined="true">
-                    <MudCardContent>
-                        <MemberStateWidget MemberId="@x.Key" State="@x.Value"></MemberStateWidget>
-                    </MudCardContent>
-                </MudCard>
-            }
+            var memberState = _state.Members[_member.Id];
+            
+            <MudText>Member State @_member.Id</MudText>
+            <MudCard Class="my-2" Outlined="true">
+                <MudCardContent>
+                    <MemberStateWidget MemberId="@_member.Id" State="@memberState"></MemberStateWidget>
+                </MudCardContent>
+            </MudCard>
+            
         }
     </MudItem>
 </MudGrid>
