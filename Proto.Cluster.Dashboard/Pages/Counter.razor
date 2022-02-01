@@ -15,10 +15,10 @@
     <MudItem xs="5">
         <MudTextField Adornment="Adornment.End" 
                       AdornmentIcon="@Icons.Filled.Search"
-                      Label="_search" 
+                      Label="Search" 
                       Variant="Variant.Filled" 
                       @bind-Value="_search" 
-                      DebounceInterval="10"
+                      DebounceInterval="100"
                       OnDebounceIntervalElapsed="UpdateSearch"
         ></MudTextField>
         @if (_members != null)
