@@ -5,12 +5,12 @@
     <div class="box">
         <ExpanderButton Text="@($"State Key: {stateEntry.Key} - Version: {stateEntry.Value.SequenceNumber} - Updated: {stateEntry.Value.LocalTimestamp.ToString("yyyy-MM-dd hh:mm:ss")}")">
 
-            @if (stateEntry.Key == "topology")
+            @if (stateEntry.Key == @GossipKeys.Topology)
             {
                 var topology = stateEntry.Value.Value.Unpack<ClusterTopology>();
                 <ClusterTopologyWidget State="topology"></ClusterTopologyWidget>
             }
-            else if (stateEntry.Key == "heartbeat")
+            else if (stateEntry.Key == @GossipKeys.Heartbeat)
             {
                 var heartbeat = stateEntry.Value.Value.Unpack<MemberHeartbeat>();
                 <MemberHeartbeatWidget State="heartbeat"></MemberHeartbeatWidget>

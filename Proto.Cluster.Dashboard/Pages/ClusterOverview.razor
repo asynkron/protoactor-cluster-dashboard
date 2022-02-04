@@ -1,0 +1,81 @@
+﻿@page "/clusteroverview"
+@using Proto.Cluster.Gossip
+@inject ActorSystem System
+<PageTitle>Counter</PageTitle>
+
+<MudChart ChartType="ChartType.Bar" ChartSeries="@Series" XAxisLabels="@XAxisLabels.ToArray()" Width="100%" Height="350px">
+	<CustomGraphics>
+
+	</CustomGraphics>
+</MudChart>
+
+
+@code {
+    private List<ChartSeries> Series = new();
+    private List<string> XAxisLabels = new();
+    
+    private readonly CancellationTokenSource _cts = new();
+    private bool _disposed;
+    
+    protected override async Task OnInitializedAsync()
+    {
+        _ = Task.Run(async () =>
+        {
+            while (!_cts.Token.IsCancellationRequested)
+            {
+                var memberHeartbeats = await System.Cluster().Gossip.GetState<MemberHeartbeat>(GossipKeys.Heartbeat);
+                var stats = (from x in memberHeartbeats
+                    let memberId = x.Key
+                    from y in x.Value.ActorStatistics.ActorCount
+                    select (MemberId: memberId, Kind: y.Key, Count: y.Value))
+                    .ToList();
+                    
+                var statsByKind = stats.ToLookup(t => t.Kind, t => t);
+                var statsByMember = stats.ToLookup(t => t.MemberId, t => t);
+                
+                Series.Clear();
+                XAxisLabels.Clear();
+
+                foreach (var z in statsByKind)
+                {
+                    XAxisLabels.Add(z.Key);
+                }
+
+                foreach (var z in statsByMember)
+                {
+                    var s = new ChartSeries()
+                    {
+                        Name = z.Key,
+                        Data = z.Select(l => (double)l.Count).ToArray(),
+                    };
+                    Series.Add(s);
+                }
+                
+                
+                
+                
+                await InvokeAsync(StateHasChanged);
+                await Task.Delay(100);
+            }
+        }, _cts.Token);
+        await base.OnInitializedAsync();
+    }
+
+    public void Dispose()
+    {
+        Dispose(true);
+    }
+
+    public void Dispose(bool disposing)
+    {
+        if (_disposed)
+        {
+            return;
+        }
+        if (disposing)
+        {
+            _cts.Cancel();
+        }
+        _disposed = true;
+    }
+}
