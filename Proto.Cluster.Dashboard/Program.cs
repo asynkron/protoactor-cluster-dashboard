@@ -5,6 +5,7 @@ using Proto.Cluster.Partition;
 using Proto.Cluster.Testing;
 using Proto.Remote.GrpcNet;
 using MudBlazor.Services;
+using Proto.Remote;
 
 var agent = new InMemAgent();
 var lookup = new PartitionIdentityLookup();
@@ -59,7 +60,7 @@ async Task<ActorSystem> GetSystem(InMemAgent agent, IIdentityLookup identityLook
     var props = Props.FromProducer(() => new DummyActor());
     var provider = new TestProvider(new TestProviderOptions(), agent);
     var actorSystem = new ActorSystem()
-        .WithRemote(GrpcNetRemoteConfig.BindToLocalhost())
+        .WithRemote(GrpcNetRemoteConfig.BindToLocalhost().WithRemoteDiagnostics(true))
         .WithCluster(ClusterConfig.Setup("cluster", provider, identityLookup)
             .WithClusterKind("SomeKind", props)
             .WithClusterKind("SomeOtherKind", props));
