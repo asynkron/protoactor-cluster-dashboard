@@ -8,7 +8,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2344f875-b440-492c-afac-0b4121052cf2" name="Changes" comment="theme switch" />
+    <list default="true" id="2344f875-b440-492c-afac-0b4121052cf2" name="Changes" comment=".">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Proto.Cluster.Dashboard/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Proto.Cluster.Dashboard/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/ClusterOverview.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/ClusterOverview.razor" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -96,7 +99,7 @@
       <workItem from="1643219389069" duration="6416000" />
       <workItem from="1643980273736" duration="5289000" />
       <workItem from="1643985859801" duration="729000" />
-      <workItem from="1643995054177" duration="8862000" />
+      <workItem from="1643995054177" duration="10779000" />
     </task>
     <task id="LOCAL−00001" summary=".">
       <created>1643061789034</created>
@@ -278,7 +281,13 @@
       <option name="presentableId" value="LOCAL−00030" />
       <updated>1644005728352</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL−00031" summary=".">
+      <created>1644006073817</created>
+      <option name="number" value="LOCAL−00031" />
+      <option name="presentableId" value="LOCAL−00031" />
+      <updated>1644006073817</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -306,10 +315,10 @@
     <MESSAGE value="refactoring" />
     <MESSAGE value="diagram" />
     <MESSAGE value="charts" />
-    <MESSAGE value="." />
     <MESSAGE value="sidebar" />
     <MESSAGE value="theme switch" />
-    <option name="LAST_COMMIT_MESSAGE" value="theme switch" />
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
