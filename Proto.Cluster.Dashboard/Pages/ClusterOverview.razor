@@ -2,10 +2,10 @@
 @using Proto.Cluster.Gossip
 @inject ActorSystem System
 <PageTitle>Counter</PageTitle>
-
+<MudText Typo="Typo.h5">Virtual Actor Count</MudText>
 <MudRadioGroup @bind-SelectedOption="@SelectedOption">
     <MudRadio Option="@("1")" Color="Color.Primary">Group by Kind</MudRadio>
-    <MudRadio Option="@("2")" Color="Color.Secondary">Group bu Member</MudRadio>
+    <MudRadio Option="@("2")" Color="Color.Secondary">Group by Member</MudRadio>
     <MudRadio Option="@("3")" Color="Color.Tertiary">Aggregated</MudRadio>
 </MudRadioGroup>
 
