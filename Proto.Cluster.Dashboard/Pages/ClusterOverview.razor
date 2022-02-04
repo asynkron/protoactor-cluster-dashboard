@@ -45,7 +45,7 @@
                 {
                     var s = new ChartSeries()
                     {
-                        Name = z.Key,
+                        Name = z.Key.Substring(0,5)+"...",
                         Data = z.Select(l => (double)l.Count).ToArray(),
                     };
                     Series.Add(s);

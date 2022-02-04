@@ -8,13 +8,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2344f875-b440-492c-afac-0b4121052cf2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/ClusterOverview.razor" afterDir="false" />
+    <list default="true" id="2344f875-b440-492c-afac-0b4121052cf2" name="Changes" comment="diagram">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Proto.Cluster.Dashboard/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Proto.Cluster.Dashboard/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/Counter.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/ClusterState.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Proto.Cluster.Dashboard.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Proto.Cluster.Dashboard.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Shared/MemberStateWidget.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Shared/MemberStateWidget.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Shared/NavMenu.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Shared/NavMenu.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/ClusterOverview.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/ClusterOverview.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +96,7 @@
       <updated>1643061766138</updated>
       <workItem from="1643061769545" duration="17016000" />
       <workItem from="1643219389069" duration="6416000" />
-      <workItem from="1643980273736" duration="1950000" />
+      <workItem from="1643980273736" duration="3563000" />
     </task>
     <task id="LOCAL−00001" summary=".">
       <created>1643061789034</created>
@@ -227,7 +224,13 @@
       <option name="presentableId" value="LOCAL−00021" />
       <updated>1643740459239</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL−00022" summary="diagram">
+      <created>1643982348860</created>
+      <option name="number" value="LOCAL−00022" />
+      <option name="presentableId" value="LOCAL−00022" />
+      <updated>1643982348860</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,14 +257,15 @@
     <MESSAGE value="hexagons" />
     <MESSAGE value="refactoring" />
     <MESSAGE value="." />
-    <option name="LAST_COMMIT_MESSAGE" value="." />
+    <MESSAGE value="diagram" />
+    <option name="LAST_COMMIT_MESSAGE" value="diagram" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/ClusterOverview.razor</url>
-          <line>62</line>
+          <line>56</line>
           <properties documentPath="C:\Git\protoactor-cluster-dashboard\Proto.Cluster.Dashboard\Pages\ClusterOverview.razor" initialLine="47" isMultiMethodBreakpoint="true">
             <option name="multiMethodBreakpoint" value="true" />
             <startOffsets>
@@ -272,6 +276,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Proto.Cluster.Dashboard/Program.cs</url>
+          <line>91</line>
+          <properties documentPath="C:\Git\protoactor-cluster-dashboard\Proto.Cluster.Dashboard\Program.cs" initialLine="80" containingFunctionPresentation="method 'ReceiveAsync'">
+            <startOffsets>
+              <option value="2670" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2718" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

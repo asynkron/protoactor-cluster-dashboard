@@ -15,10 +15,6 @@ for (int i = 0; i < 3; i++)
     GetSystem(agent, lookup);    
 }
 
-
-
-
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -41,12 +37,50 @@ app.UseStaticFiles();
 app.UseRouting();
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
+_ = Task.Run(async () =>
+{
+    var rnd = new Random();
+    while (true)
+    {
+        Console.Write(".");
+        await Task.Delay(20);
+        var res = await system.Cluster()
+            .RequestAsync<DummyResponse>("id" + rnd.Next(1, 1000), "SomeKind", new DummyRequest(),
+                CancellationTokens.FromSeconds(5));
+
+        var res2= await system.Cluster()
+            .RequestAsync<DummyResponse>("id" + rnd.Next(1, 200), "SomeOtherKind", new DummyRequest(),
+                CancellationTokens.FromSeconds(5));
+    }
+});
 app.Run();
 
 async Task<ActorSystem> GetSystem(InMemAgent agent, IIdentityLookup identityLookup)
 {
+    var props = Props.FromProducer(() => new DummyActor());
     var provider = new TestProvider(new TestProviderOptions(), agent);
-    var actorSystem = new ActorSystem().WithRemote(GrpcNetRemoteConfig.BindToLocalhost()).WithCluster(ClusterConfig.Setup("cluster", provider, identityLookup).WithClusterKind("SomeKind", Props.Empty).WithClusterKind("SomeOtherKind", Props.Empty));
+    var actorSystem = new ActorSystem()
+        .WithRemote(GrpcNetRemoteConfig.BindToLocalhost())
+        .WithCluster(ClusterConfig.Setup("cluster", provider, identityLookup)
+            .WithClusterKind("SomeKind", props)
+            .WithClusterKind("SomeOtherKind", props));
     await actorSystem.Cluster().StartMemberAsync();
     return actorSystem;
+}
+
+public record DummyRequest;
+
+public record DummyResponse;
+
+public class DummyActor : IActor
+{
+    public async Task ReceiveAsync(IContext context)
+    {
+        await Task.Delay(20);
+        if (context.Message is DummyRequest)
+        {
+            var id = context.Get<ClusterIdentity>();
+            context.Respond(new DummyResponse());
+        }
+    }
 }
