@@ -12,7 +12,8 @@
 
 @if (_members != null)
 {
-    <div class="mt-2 mb-4">Showing @(SearchMembers().Count()) of @(_members.Count()) members</div>
+    
+    <div class="mt-2 mb-4"><MudText Color="Color.Info">Showing @(SearchMembers().Count()) of @(_members.Count()) members</MudText></div>
     foreach (var member in SearchMembers())
     {
         <div @onclick="() => MemberSelected(member)">

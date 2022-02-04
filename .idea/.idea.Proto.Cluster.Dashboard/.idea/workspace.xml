@@ -8,11 +8,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2344f875-b440-492c-afac-0b4121052cf2" name="Changes" comment=".">
-      <change afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Shared/MemberSearch.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Proto.Cluster.Dashboard/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Proto.Cluster.Dashboard/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/ClusterState.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/ClusterState.razor" afterDir="false" />
-    </list>
+    <list default="true" id="2344f875-b440-492c-afac-0b4121052cf2" name="Changes" comment="." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,7 +31,9 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1e6253f938894ce5e58c9d13271790eda41424ed2e9ce2743fb6d94535d562/EventCallbackOfT.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/278650d6d7c164935b49c8cd37ea96fbaea25a1d6a0633de0c44f34bbd1f52d/EventCallbackOfT.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/59e79e7ca9c4ddc2dcefc62f08dcde8f38b48cec4fa2a9ee4b8c46ded5823/ClientBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7aa2b1425abbde669ae92e26b2ff24f7395f6799cd7598155c5e1fac322228/EventCallbackWorkItem.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -97,7 +95,7 @@
       <workItem from="1643219389069" duration="6416000" />
       <workItem from="1643980273736" duration="5289000" />
       <workItem from="1643985859801" duration="729000" />
-      <workItem from="1643995054177" duration="3405000" />
+      <workItem from="1643995054177" duration="3707000" />
     </task>
     <task id="LOCAL−00001" summary=".">
       <created>1643061789034</created>
@@ -255,7 +253,13 @@
       <option name="presentableId" value="LOCAL−00026" />
       <updated>1643995666897</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL−00027" summary=".">
+      <created>1643999736561</created>
+      <option name="number" value="LOCAL−00027" />
+      <option name="presentableId" value="LOCAL−00027" />
+      <updated>1643999736561</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -291,7 +295,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Proto.Cluster.Dashboard/Shared/MemberSearch.razor</url>
-          <line>98</line>
+          <line>92</line>
           <properties documentPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Shared/MemberSearch.razor" initialLine="96" isMultiMethodBreakpoint="true">
             <option name="multiMethodBreakpoint" value="true" />
             <startOffsets>
@@ -302,20 +306,6 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Proto.Cluster.Dashboard/Shared/MemberSearch.razor</url>
-          <line>72</line>
-          <properties documentPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Shared/MemberSearch.razor" initialLine="72" isMultiMethodBreakpoint="true">
-            <option name="multiMethodBreakpoint" value="true" />
-            <startOffsets>
-              <option value="-1" />
-            </startOffsets>
-            <endOffsets>
-              <option value="-1" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
