@@ -1,57 +1,68 @@
 @page "/clusterstate"
 @using Proto.Cluster.Gossip
 @using Proto.Remote
-@using Grpc.Core
 @inject ActorSystem System
 <PageTitle>Counter</PageTitle>
 
 
 <MemberSearch OnMemberSelected="MemberSelected" OnGossipState="GossipState"></MemberSearch>
 
- 
-       <MudDrawer @bind-Open="@_open" Anchor="Anchor.Right" Variant="DrawerVariant.Temporary" ClipMode="DrawerClipMode.Never" Elevation="2" Width="800px">
-           @if (_state != null && _member != null)
-           {
-               var memberState = _state.Members[_member.Id];
-               <MudDrawerHeader >
-                   <MudText Color="Color.Info" Typo="Typo.h5">Member @_member.Id</MudText>
-               </MudDrawerHeader>
- 
-               <MudTabs Rounded="false" Color="Color.Secondary">
-                   <MudTabPanel Text="State">
-                       <div Class="pa-4">
-                           <MemberStateWidget MemberId="@_member.Id" State="@memberState"></MemberStateWidget>
-                       </div>
-                   </MudTabPanel>
-                   <MudTabPanel Text="Actors">
-                       <div Class="pa-4">
-                           <MudTextField Adornment="Adornment.End"
-                                         AdornmentIcon="@Icons.Filled.Search"
-                                         Label="Search"
-                                         Variant="Variant.Filled"
-                                         @bind-Value="_search">
-                           </MudTextField>
-                           <MudButton OnClick="SearchActors">Search</MudButton>
-                       </div>
-                       <MudList Clickable="true" Dense>
-                           @if (_pids != null)
-                           {
-                               foreach (var pid in _pids)
-                               {
-                                   <MudListItem Text="@pid.Id" />
-                               }
-                           }
-                       </MudList>
-                   </MudTabPanel>
-               </MudTabs>
-   
-           }
-           else
-           {
-               <span>null data</span>
-           }
-       </MudDrawer>
-   
+
+<MudDrawer @bind-Open="@_open" Anchor="Anchor.Right" Variant="DrawerVariant.Temporary" ClipMode="DrawerClipMode.Never" Elevation="2" Width="800px">
+    @if (_state != null && _member != null)
+    {
+        var memberState = _state.Members[_member.Id];
+        <MudDrawerHeader >
+            <MudText Color="Color.Info" Typo="Typo.h5">Member @_member.Id</MudText>
+        </MudDrawerHeader>
+        <MudTabs Rounded="false" Color="Color.Secondary">
+            <MudTabPanel Text="State">
+                <div Class="pa-4">
+                    <MemberStateWidget MemberId="@_member.Id" State="@memberState"></MemberStateWidget>
+                </div>
+            </MudTabPanel>
+            <MudTabPanel Text="Actors">
+                <div Class="pa-4">
+                    <MudToolBar>
+                        <MudTextField Adornment="Adornment.End"
+                                      AdornmentIcon="@Icons.Filled.Search"
+                                      Label="Search"
+                                      Variant="Variant.Filled"
+                                      @bind-Value="_search">
+                        </MudTextField>
+                        <MudButton OnClick="SearchActors">Search</MudButton>
+                    </MudToolBar>
+
+                    <MudPaper Elevation="2" Class="my-2" Style="max-height: 300px;overflow-y: scroll">
+                        <MudList Clickable="true" Dense>
+                            @if (_pids != null)
+                            {
+                                foreach (var pid in _pids)
+                                {
+                                    <MudListItem Text="@pid.Id" OnClick="() => ClickPid(pid)"/>
+                                }
+                            }
+                        </MudList>
+                    </MudPaper>
+                    @if (_pid != null)
+                    {
+                        <MudPaper Class="pa-2 my-2">
+                            <MudText Typo="Typo.h5">Diagnostics for PID: @_pid.Id</MudText>
+                            <MudAlert Severity="Severity.Info" NoIcon>
+                                @_diagnostics
+                            </MudAlert>
+                        </MudPaper>
+                    }
+                </div>
+            </MudTabPanel>
+        </MudTabs>
+    }
+    else
+    {
+        <span>null data</span>
+    }
+</MudDrawer>
+
 
 @code {
     private Member? _member;
@@ -59,6 +70,8 @@
     private string _search = "";
     private bool _open = false;
     private PID[] _pids;
+    private PID _pid;
+    private string _diagnostics;
 
     private Task MemberSelected(Member member)
     {
@@ -75,9 +88,25 @@
 
     private async Task SearchActors(MouseEventArgs arg)
     {
-        var channel = Grpc.Net.Client.GrpcChannel.ForAddress("http://" + _member!.Address);
-        var client = new Remoting.RemotingClient(channel);
+        var client = GetClient();
         var res = await client.ListProcessesAsync(new ListProcessesRequest() { Name = _search });
         _pids = res.Pids.OrderBy(p => p.Id).ToArray();
+    }
+
+    private Remoting.RemotingClient GetClient()
+    {
+        var channel = Grpc.Net.Client.GrpcChannel.ForAddress("http://" + _member!.Address);
+        var client = new Remoting.RemotingClient(channel);
+        return client;
+    }
+
+    private async Task ClickPid(PID pid)
+    {
+        _pid = pid;
+        _diagnostics = "";
+        var client = GetClient();
+        var res = await client.GetProcessDiagnosticsAsync(new GetProcessDiagnosticsRequest() { Pid = pid });
+        Console.WriteLine(res.DiagnosticsString);
+        _diagnostics = res.DiagnosticsString;
     }
 }
