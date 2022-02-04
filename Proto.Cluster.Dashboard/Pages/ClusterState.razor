@@ -6,38 +6,40 @@
 
 <MemberSearch OnMemberSelected="MemberSelected" OnGossipState="GossipState"></MemberSearch>
 
-<MudDrawer @bind-Open="@_open" Anchor="Anchor.Right" Variant="DrawerVariant.Temporary" ClipMode="DrawerClipMode.Never" Elevation="2" Width="800px">
-    @if (_state != null && _member != null)
-    {
-        var memberState = _state.Members[_member.Id];
-        <MudDrawerHeader Dense>
-            <MudText Color="Color.Info" Typo="Typo.h5"><MudIcon Size="Size.Large" Icon="@Icons.TwoTone.GroupWork"/> Member @_member.Id</MudText>
-        </MudDrawerHeader>
-        <MudDrawerContainer >
-            <MudTabs>
-                <MudTabPanel Text="State">
-                    <div Class="pa-4">
-                    <MemberStateWidget MemberId="@_member.Id" State="@memberState"></MemberStateWidget>
-                    </div>
-                </MudTabPanel>
-                <MudTabPanel Text="Actors">
-                    <div Class="pa-4">
-                        <MudTextField Adornment="Adornment.End"
-                                      AdornmentIcon="@Icons.Filled.Search"
-                                      Label="Search"
-                                      Variant="Variant.Filled"
-                                      @bind-Value="_search">
-                        </MudTextField>
-                    </div>
-                </MudTabPanel>
-            </MudTabs>
-        </MudDrawerContainer>
-    }
-    else
-    {
-        <span>null data</span>
-    }
-</MudDrawer>
+ 
+       <MudDrawer @bind-Open="@_open" Anchor="Anchor.Right" Variant="DrawerVariant.Temporary" ClipMode="DrawerClipMode.Never" Elevation="2" Width="800px">
+           @if (_state != null && _member != null)
+           {
+               var memberState = _state.Members[_member.Id];
+               <MudDrawerHeader >
+                   <MudText Color="Color.Info" Typo="Typo.h5">Member @_member.Id</MudText>
+               </MudDrawerHeader>
+ 
+               <MudTabs Rounded="false" Color="Color.Secondary">
+                   <MudTabPanel Text="State">
+                       <div Class="pa-4">
+                           <MemberStateWidget MemberId="@_member.Id" State="@memberState"></MemberStateWidget>
+                       </div>
+                   </MudTabPanel>
+                   <MudTabPanel Text="Actors">
+                       <div Class="pa-4">
+                           <MudTextField Adornment="Adornment.End"
+                                         AdornmentIcon="@Icons.Filled.Search"
+                                         Label="Search"
+                                         Variant="Variant.Filled"
+                                         @bind-Value="_search">
+                           </MudTextField>
+                       </div>
+                   </MudTabPanel>
+               </MudTabs>
+   
+           }
+           else
+           {
+               <span>null data</span>
+           }
+       </MudDrawer>
+   
 
 @code {
     private Member? _member;
