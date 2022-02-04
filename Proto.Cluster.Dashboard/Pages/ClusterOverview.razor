@@ -3,6 +3,18 @@
 @inject ActorSystem System
 <PageTitle>Counter</PageTitle>
 
+<MudToggleIconButton @bind-Toggled="@_groupByKind"
+                     Icon="@Icons.Material.Filled.AlarmOff" Color="@Color.Info" Title="Group by member"
+                     ToggledIcon="@Icons.Material.Filled.AlarmOn" ToggledColor="@Color.Warning" ToggledTitle="Group by kind"/>
+@if (_groupByKind)
+{
+    <span>Group by kind</span>
+}
+else
+{
+    <span>Group by member</span>
+}
+
 <MudChart ChartType="ChartType.Bar" ChartSeries="@Series" XAxisLabels="@XAxisLabels.ToArray()" Width="100%" Height="350px">
 	<CustomGraphics>
 
@@ -16,6 +28,7 @@
     
     private readonly CancellationTokenSource _cts = new();
     private bool _disposed;
+    private bool _groupByKind;
     
     protected override async Task OnInitializedAsync()
     {
@@ -36,29 +49,44 @@
                 Series.Clear();
                 XAxisLabels.Clear();
 
-                foreach (var z in statsByKind)
+
+                var labelsData = statsByKind;
+                var seriesData = statsByMember;
+                if (_groupByKind)
                 {
-                    XAxisLabels.Add(z.Key);
+                    labelsData = statsByMember;
+                    seriesData = statsByKind;
                 }
 
-                foreach (var z in statsByMember)
+                foreach (var label in labelsData)
                 {
-                    var s = new ChartSeries()
-                    {
-                        Name = z.Key.Substring(0,5)+"...",
-                        Data = z.Select(l => (double)l.Count).ToArray(),
-                    };
-                    Series.Add(s);
+                    XAxisLabels.Add(Trim(label.Key));
                 }
-                
-                
-                
+
+                foreach (var series in seriesData)
+                {
+                    Series.Add(new ChartSeries()
+                    {
+                        Name = Trim(series.Key),
+                        Data = series.Select(l => (double)l.Count).ToArray(),
+                    });
+                }
                 
                 await InvokeAsync(StateHasChanged);
                 await Task.Delay(100);
             }
         }, _cts.Token);
         await base.OnInitializedAsync();
+    }
+
+    private string Trim(string text)
+    {
+        var max = 8;
+        if (text.Length < max)
+        {
+            return text;
+        }
+        return text.Substring(0, max) + "...";
     }
 
     public void Dispose()

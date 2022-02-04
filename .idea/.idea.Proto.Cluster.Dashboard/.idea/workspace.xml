@@ -8,8 +8,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2344f875-b440-492c-afac-0b4121052cf2" name="Changes" comment="charts">
-      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Program.cs" afterDir="false" />
+    <list default="true" id="2344f875-b440-492c-afac-0b4121052cf2" name="Changes" comment=".">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Proto.Cluster.Dashboard/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Proto.Cluster.Dashboard/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/ClusterOverview.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/ClusterOverview.razor" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +98,7 @@
       <updated>1643061766138</updated>
       <workItem from="1643061769545" duration="17016000" />
       <workItem from="1643219389069" duration="6416000" />
-      <workItem from="1643980273736" duration="3888000" />
+      <workItem from="1643980273736" duration="4581000" />
     </task>
     <task id="LOCAL−00001" summary=".">
       <created>1643061789034</created>
@@ -237,7 +238,13 @@
       <option name="presentableId" value="LOCAL−00023" />
       <updated>1643984125799</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL−00024" summary=".">
+      <created>1643984409208</created>
+      <option name="number" value="LOCAL−00024" />
+      <option name="presentableId" value="LOCAL−00024" />
+      <updated>1643984409208</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,17 +270,17 @@
     <MESSAGE value="hex" />
     <MESSAGE value="hexagons" />
     <MESSAGE value="refactoring" />
-    <MESSAGE value="." />
     <MESSAGE value="diagram" />
     <MESSAGE value="charts" />
-    <option name="LAST_COMMIT_MESSAGE" value="charts" />
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/ClusterOverview.razor</url>
-          <line>56</line>
+          <line>78</line>
           <properties documentPath="C:\Git\protoactor-cluster-dashboard\Proto.Cluster.Dashboard\Pages\ClusterOverview.razor" initialLine="47" isMultiMethodBreakpoint="true">
             <option name="multiMethodBreakpoint" value="true" />
             <startOffsets>
