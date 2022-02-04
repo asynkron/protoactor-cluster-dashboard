@@ -32,51 +32,53 @@ else
     
     protected override async Task OnInitializedAsync()
     {
-        _ = Task.Run(async () =>
-        {
-            while (!_cts.Token.IsCancellationRequested)
-            {
-                var memberHeartbeats = await System.Cluster().Gossip.GetState<MemberHeartbeat>(GossipKeys.Heartbeat);
-                var stats = (from x in memberHeartbeats
-                    let memberId = x.Key
-                    from y in x.Value.ActorStatistics.ActorCount
-                    select (MemberId: memberId, Kind: y.Key, Count: y.Value))
-                    .ToList();
-                    
-                var statsByKind = stats.ToLookup(t => t.Kind, t => t);
-                var statsByMember = stats.ToLookup(t => t.MemberId, t => t);
-                
-                Series.Clear();
-                XAxisLabels.Clear();
-
-
-                var labelsData = statsByKind;
-                var seriesData = statsByMember;
-                if (_groupByKind)
-                {
-                    labelsData = statsByMember;
-                    seriesData = statsByKind;
-                }
-
-                foreach (var label in labelsData)
-                {
-                    XAxisLabels.Add(Trim(label.Key));
-                }
-
-                foreach (var series in seriesData)
-                {
-                    Series.Add(new ChartSeries()
-                    {
-                        Name = Trim(series.Key),
-                        Data = series.Select(l => (double)l.Count).ToArray(),
-                    });
-                }
-                
-                await InvokeAsync(StateHasChanged);
-                await Task.Delay(100);
-            }
-        }, _cts.Token);
+        _ = Task.Run(RunLoop, _cts.Token);
         await base.OnInitializedAsync();
+    }
+    
+    private async Task RunLoop()
+    {
+        while (!_cts.Token.IsCancellationRequested)
+        {
+            var memberHeartbeats = await System.Cluster().Gossip.GetState<MemberHeartbeat>(GossipKeys.Heartbeat);
+            var stats = (from x in memberHeartbeats
+                let memberId = x.Key
+                from y in x.Value.ActorStatistics.ActorCount
+                select (MemberId: memberId, Kind: y.Key, Count: y.Value))
+                .ToList();
+                    
+            var statsByKind = stats.ToLookup(t => t.Kind, t => t);
+            var statsByMember = stats.ToLookup(t => t.MemberId, t => t);
+                
+            Series.Clear();
+            XAxisLabels.Clear();
+
+
+            var labelsData = statsByKind;
+            var seriesData = statsByMember;
+            if (_groupByKind)
+            {
+                labelsData = statsByMember;
+                seriesData = statsByKind;
+            }
+
+            foreach (var label in labelsData)
+            {
+                XAxisLabels.Add(Trim(label.Key));
+            }
+
+            foreach (var series in seriesData)
+            {
+                Series.Add(new ChartSeries()
+                {
+                    Name = Trim(series.Key),
+                    Data = series.Select(l => (double)l.Count).ToArray(),
+                });
+            }
+                
+            await InvokeAsync(StateHasChanged);
+            await Task.Delay(100);
+        }
     }
 
     private string Trim(string text)
