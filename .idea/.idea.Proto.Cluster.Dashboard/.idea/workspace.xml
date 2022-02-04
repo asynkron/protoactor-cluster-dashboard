@@ -8,9 +8,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2344f875-b440-492c-afac-0b4121052cf2" name="Changes" comment="diagram">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Proto.Cluster.Dashboard/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Proto.Cluster.Dashboard/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/ClusterOverview.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/ClusterOverview.razor" afterDir="false" />
+    <list default="true" id="2344f875-b440-492c-afac-0b4121052cf2" name="Changes" comment="charts">
       <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,6 +30,9 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Git/protoactor-cluster-dashboard/Proto.Cluster.Dashboard/Pages/ClusterOverview.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -96,7 +97,7 @@
       <updated>1643061766138</updated>
       <workItem from="1643061769545" duration="17016000" />
       <workItem from="1643219389069" duration="6416000" />
-      <workItem from="1643980273736" duration="3563000" />
+      <workItem from="1643980273736" duration="3888000" />
     </task>
     <task id="LOCAL−00001" summary=".">
       <created>1643061789034</created>
@@ -230,7 +231,13 @@
       <option name="presentableId" value="LOCAL−00022" />
       <updated>1643982348860</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL−00023" summary="charts">
+      <created>1643984125799</created>
+      <option name="number" value="LOCAL−00023" />
+      <option name="presentableId" value="LOCAL−00023" />
+      <updated>1643984125799</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -258,7 +265,8 @@
     <MESSAGE value="refactoring" />
     <MESSAGE value="." />
     <MESSAGE value="diagram" />
-    <option name="LAST_COMMIT_MESSAGE" value="diagram" />
+    <MESSAGE value="charts" />
+    <option name="LAST_COMMIT_MESSAGE" value="charts" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -279,13 +287,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Proto.Cluster.Dashboard/Program.cs</url>
-          <line>91</line>
+          <line>81</line>
           <properties documentPath="C:\Git\protoactor-cluster-dashboard\Proto.Cluster.Dashboard\Program.cs" initialLine="80" containingFunctionPresentation="method 'ReceiveAsync'">
             <startOffsets>
-              <option value="2670" />
+              <option value="2398" />
             </startOffsets>
             <endOffsets>
-              <option value="2718" />
+              <option value="2435" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="2" />

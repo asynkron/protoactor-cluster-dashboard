@@ -42,13 +42,12 @@ _ = Task.Run(async () =>
     var rnd = new Random();
     while (true)
     {
-        Console.Write(".");
-        await Task.Delay(20);
-        var res = await system.Cluster()
+        await Task.Delay(10);
+        await system.Cluster()
             .RequestAsync<DummyResponse>("id" + rnd.Next(1, 1000), "SomeKind", new DummyRequest(),
                 CancellationTokens.FromSeconds(5));
 
-        var res2= await system.Cluster()
+        await system.Cluster()
             .RequestAsync<DummyResponse>("id" + rnd.Next(1, 200), "SomeOtherKind", new DummyRequest(),
                 CancellationTokens.FromSeconds(5));
     }
