@@ -1,0 +1,122 @@
+@using Proto.Cluster.Gossip
+@inject ActorSystem System
+
+<MudTextField Adornment="Adornment.End"
+              AdornmentIcon="@Icons.Filled.Search"
+              Label="Search"
+              Variant="Variant.Filled"
+              @bind-Value="_search"
+              DebounceInterval="100"
+              OnDebounceIntervalElapsed="UpdateSearch">
+</MudTextField>
+
+@if (_members != null)
+{
+    <div class="mt-2 mb-4">Showing @(SearchMembers().Count()) of @(_members.Count()) members</div>
+    foreach (var member in SearchMembers())
+    {
+        <div @onclick="() => MemberSelected(member)">
+            <MudCard Class="my-2" Style="@(member.Id == _member?.Id ? "border: 2px solid " + Theme.Palette.PrimaryLighten : "")" Outlined="true">
+                <MudCardHeader>
+                    <CardHeaderAvatar>
+                        <MudAvatar Color="Color.Success">
+                            <MudIcon Icon="@Icons.Material.Filled.Favorite"/>
+                        </MudAvatar>
+                    </CardHeaderAvatar>
+                    <CardHeaderContent>
+                        <MudText Typo="Typo.body1">@member.Id</MudText>
+                        <MudText Typo="Typo.body2">Address: @member.Address</MudText>
+                        <MudText Typo="Typo.body2">Kinds: @string.Join(", ", member.Kinds)</MudText>
+                    </CardHeaderContent>
+                    <CardHeaderActions>
+                        <MudIconButton Icon="@Icons.Material.Filled.Settings" Color="Color.Default"/>
+                    </CardHeaderActions>
+                </MudCardHeader>
+            </MudCard>
+        </div>
+    }
+}
+
+@code {
+    private GossipState? _gossipState;
+    private readonly CancellationTokenSource _cts = new();
+    private bool _disposed;
+    private Member[]? _members;
+    private Member? _member;
+    private readonly MudTheme Theme = new();
+    private string _search = "";
+    
+    [Parameter]
+    public EventCallback<Member> OnMemberSelected { get; set; }
+    
+    [Parameter]
+    public EventCallback<GossipState> OnGossipState { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        _ = Task.Run(RunLoop, _cts.Token);
+        await base.OnInitializedAsync();
+    }
+
+    private async Task MemberSelected(Member member)
+    {
+        _member = member;
+        await OnMemberSelected.InvokeAsync(member);
+    }
+
+    private async Task GossipState(GossipState gossipState)
+    {
+        _gossipState = gossipState;
+        await OnGossipState.InvokeAsync(gossipState);
+    }
+
+    private async Task RunLoop()
+    {
+        while (!_cts.Token.IsCancellationRequested)
+        {
+            try
+            {
+                _gossipState = await System.Cluster().Gossip.GetStateSnapshot();
+
+                _members = System.Cluster().MemberList.GetAllMembers();
+         
+                await InvokeAsync(async () =>
+                {
+                    _member ??= _members.First();
+                    await MemberSelected(_member);
+                    await GossipState(_gossipState);
+                });
+                await Task.Delay(100);
+            }
+            catch (Exception x)
+            {
+                Console.WriteLine(x);
+            }
+        }
+    }
+
+    public void Dispose()
+    {
+        Dispose(true);
+    }
+
+    public void Dispose(bool disposing)
+    {
+        if (_disposed)
+        {
+            return;
+        }
+        if (disposing)
+        {
+            _cts.Cancel();
+        }
+        _disposed = true;
+    }
+
+    private IEnumerable<Member> SearchMembers() => _members.Where(m => m.Id.Contains(_search) || m.Address.Contains(_search));
+
+    private async Task UpdateSearch()
+    {
+        await InvokeAsync(StateHasChanged);
+    }
+}
