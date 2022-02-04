@@ -17,7 +17,7 @@
     foreach (var member in SearchMembers())
     {
         <div @onclick="() => MemberSelected(member)">
-            <MudCard Class="my-2" Style="@(member.Id == _member?.Id ? "border: 2px solid " + Theme.Palette.PrimaryLighten : "")" Outlined="true">
+            <MudCard Class="my-2" Outlined="true">
                 <MudCardHeader>
                     <CardHeaderAvatar>
                         <MudAvatar Color="Color.Success">
@@ -83,8 +83,6 @@
          
                 await InvokeAsync(async () =>
                 {
-                    _member ??= _members.First();
-                    await MemberSelected(_member);
                     await GossipState(_gossipState);
                 });
                 await Task.Delay(100);
