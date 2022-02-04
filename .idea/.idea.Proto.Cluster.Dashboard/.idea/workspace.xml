@@ -34,6 +34,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="mock://C:/Git/protoactor-cluster-dashboard/Proto.Cluster.Dashboard/Pages/ClusterOverview.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Git/protoactor-cluster-dashboard/Proto.Cluster.Dashboard/Pages/ClusterOverview.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -98,7 +99,7 @@
       <updated>1643061766138</updated>
       <workItem from="1643061769545" duration="17016000" />
       <workItem from="1643219389069" duration="6416000" />
-      <workItem from="1643980273736" duration="4581000" />
+      <workItem from="1643980273736" duration="5289000" />
     </task>
     <task id="LOCAL−00001" summary=".">
       <created>1643061789034</created>
@@ -244,7 +245,13 @@
       <option name="presentableId" value="LOCAL−00024" />
       <updated>1643984409208</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL−00025" summary=".">
+      <created>1643985250826</created>
+      <option name="number" value="LOCAL−00025" />
+      <option name="presentableId" value="LOCAL−00025" />
+      <updated>1643985250826</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -280,7 +287,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/ClusterOverview.razor</url>
-          <line>78</line>
+          <line>74</line>
           <properties documentPath="C:\Git\protoactor-cluster-dashboard\Proto.Cluster.Dashboard\Pages\ClusterOverview.razor" initialLine="47" isMultiMethodBreakpoint="true">
             <option name="multiMethodBreakpoint" value="true" />
             <startOffsets>

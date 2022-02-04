@@ -15,7 +15,7 @@ else
     <span>Group by member</span>
 }
 
-<MudChart ChartType="ChartType.Bar" ChartSeries="@Series" XAxisLabels="@XAxisLabels.ToArray()" Width="100%" Height="350px">
+<MudChart ChartType="ChartType.Bar" LegendPosition="Position.Bottom" ChartSeries="@Series" XAxisLabels="@XAxisLabels.ToArray()" Width="100%" Height="350px">
 	<CustomGraphics>
 
 	</CustomGraphics>
@@ -81,7 +81,7 @@ else
 
     private string Trim(string text)
     {
-        var max = 8;
+        var max = 10;
         if (text.Length < max)
         {
             return text;
