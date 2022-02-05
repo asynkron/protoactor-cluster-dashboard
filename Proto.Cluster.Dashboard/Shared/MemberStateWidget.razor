@@ -3,8 +3,7 @@
 <MudList Clickable Dense>
     @foreach (var stateEntry in State.Values.OrderBy(v => v.Key))
 {
-
-    <MudListItem>
+    
         <ExpanderButton Text="@($"State Key: {stateEntry.Key} - Version: {stateEntry.Value.SequenceNumber} - Updated: {stateEntry.Value.LocalTimestamp.ToString("yyyy-MM-dd hh:mm:ss")}")">
 
             @if (stateEntry.Key == @GossipKeys.Topology)
@@ -33,8 +32,7 @@
                 <AnyStateWidget State="any"></AnyStateWidget>
             }
         </ExpanderButton>
-    </MudListItem>
-    }
+}
 </MudList>
 </MudPaper>
 

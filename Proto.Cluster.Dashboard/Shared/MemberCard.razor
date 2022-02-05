@@ -1,4 +1,13 @@
-<MudCard Outlined="true" Elevation="2">
+<style scoped>
+    .member-card {
+        cursor: pointer;
+    }
+    
+    .member-card:hover {
+        background-color: #00000008;
+    }
+</style>
+<MudCard Outlined="@Outlined" Elevation="@Elevation" Square="@Square" class="member-card">
     <MudCardHeader Class="pa-2">
         <CardHeaderAvatar>
             <MudAvatar Color="Color.Success" Variant="Variant.Filled">
@@ -26,4 +35,14 @@
 @code {
     [Parameter]
     public Member Member { get; set; }
+
+    [Parameter]
+    public int Elevation { get; set; } = 0;
+
+    [Parameter]
+    public bool Outlined { get; set; } = true;
+    
+    [Parameter]
+    public bool Square { get; set; } = false;
+
 }

@@ -2,18 +2,16 @@
 @using Proto.Cluster.Gossip
 @using Proto.Remote
 @inject ActorSystem System
-<PageTitle>Counter</PageTitle>
-
+<PageTitle>Cluster State</PageTitle>
 
 <MemberSearch OnMemberSelected="MemberSelected" OnGossipState="GossipState"></MemberSearch>
-
 
 <MudDrawer @bind-Open="@_open" Anchor="Anchor.Right" Variant="DrawerVariant.Temporary" ClipMode="DrawerClipMode.Never" Elevation="2" Width="80%" >
     @if (_state != null && _member != null)
     {
         var memberState = _state.Members[_member.Id];
-        <div class="pa-2">
-        <MemberCard Member="_member"></MemberCard>
+        <div class="pa-0">
+        <MemberCard Outlined="false" Square="true" Member="_member"></MemberCard>
         </div>
         <MudTabs Rounded="false" Color="Color.Secondary" SliderColor="Color.Primary">
             <MudTabPanel Text="State">
@@ -24,13 +22,13 @@
             <MudTabPanel Text="Actors">
                 <div Class="pa-2">
                     <MudToolBar>
-                        <MudTextField Adornment="Adornment.End"
+                        <MudTextField Adornment="Adornment.Start"
                                       AdornmentIcon="@Icons.Filled.Search"
                                       Label="Search"
-                                      Variant="Variant.Filled"
+                                      Variant="Variant.Outlined"
                                       @bind-Value="_search">
-                        </MudTextField>
-                        <MudButton OnClick="SearchActors">Search</MudButton>
+                            </MudTextField>
+                        <MudButton Variant="Variant.Outlined" OnClick="SearchActors">Search</MudButton>
                     </MudToolBar>
 
                     <MudPaper Elevation="2" Class="my-2" Style="max-height: 300px;overflow-y: scroll">
