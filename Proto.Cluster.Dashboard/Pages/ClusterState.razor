@@ -8,7 +8,7 @@
 <MemberSearch OnMemberSelected="MemberSelected" OnGossipState="GossipState"></MemberSearch>
 
 
-<MudDrawer @bind-Open="@_open" Anchor="Anchor.Right" Variant="DrawerVariant.Temporary" ClipMode="DrawerClipMode.Never" Elevation="2" Width="800px">
+<MudDrawer @bind-Open="@_open" Anchor="Anchor.Right" Variant="DrawerVariant.Temporary" ClipMode="DrawerClipMode.Never" Elevation="2" Width="80%" >
     @if (_state != null && _member != null)
     {
         var memberState = _state.Members[_member.Id];
