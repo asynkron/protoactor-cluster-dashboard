@@ -15,7 +15,7 @@
     </div>
     foreach (var member in SearchMembers())
     {
-        <div @onclick="() => MemberSelected(member)">
+        <div @onclick="() => MemberSelected(member)" class="py-2">
             <MemberCard Member="member"></MemberCard>
         </div>
     }
