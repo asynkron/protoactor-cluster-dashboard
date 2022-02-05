@@ -16,23 +16,7 @@
     foreach (var member in SearchMembers())
     {
         <div @onclick="() => MemberSelected(member)">
-            <MudCard Class="my-2" Outlined="true">
-                <MudCardHeader>
-                    <CardHeaderAvatar>
-                        <MudAvatar Color="Color.Success">
-                            <MudIcon Icon="@Icons.Material.Filled.Favorite"/>
-                        </MudAvatar>
-                    </CardHeaderAvatar>
-                    <CardHeaderContent>
-                        <MudText Typo="Typo.body1">@member.Id</MudText>
-                        <MudText Typo="Typo.body2">Address: @member.Address</MudText>
-                        <MudText Typo="Typo.body2">Kinds: @string.Join(", ", member.Kinds)</MudText>
-                    </CardHeaderContent>
-                    <CardHeaderActions>
-                        <MudIconButton Icon="@Icons.Material.Filled.Settings" Color="Color.Default"/>
-                    </CardHeaderActions>
-                </MudCardHeader>
-            </MudCard>
+            <MemberCard Member="member"></MemberCard>
         </div>
     }
 }

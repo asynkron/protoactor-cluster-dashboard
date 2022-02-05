@@ -1,0 +1,29 @@
+<MudCard Class="my-2" Outlined="true" Elevation="0">
+    <MudCardHeader Class="pa-2">
+        <CardHeaderAvatar>
+            <MudAvatar Color="Color.Success">
+                <MudIcon Icon="@Icons.Material.Filled.Favorite"/>
+            </MudAvatar>
+        </CardHeaderAvatar>
+        <CardHeaderContent>
+            <MudText Typo="Typo.h5" Color="Color.Info">Member @Member.Id</MudText>
+            <MudText Typo="Typo.body2"><b>Address:</b> @Member.Address</MudText>
+        </CardHeaderContent>
+        @* <CardHeaderActions> *@
+        @*     <MudIconButton Icon="@Icons.Material.Filled.Settings" Color="Color.Default"/> *@
+        @* </CardHeaderActions> *@
+    </MudCardHeader>
+    <MudDivider DividerType="DividerType.Middle"/>
+    <MudCardActions>
+        <MudChipSet>
+            @foreach (var kind in Member.Kinds)
+            {
+                <MudChip Size="Size.Small" Variant="Variant.Outlined" Color="Color.Secondary">@kind</MudChip>
+            }
+        </MudChipSet>
+    </MudCardActions>
+</MudCard>
+@code {
+    [Parameter]
+    public Member Member { get; set; }
+}
