@@ -8,9 +8,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2344f875-b440-492c-afac-0b4121052cf2" name="Changes" comment=".">
+    <list default="true" id="2344f875-b440-492c-afac-0b4121052cf2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/ActorDiagram.razor" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/TreeNode.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Proto.Cluster.Dashboard/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Proto.Cluster.Dashboard/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/ActorsList.razor" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/ClusterOverview.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/ClusterOverview.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/ClusterState.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/ClusterState.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Shared/NavMenu.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Shared/NavMenu.razor" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +105,8 @@
       <workItem from="1643980273736" duration="5289000" />
       <workItem from="1643985859801" duration="729000" />
       <workItem from="1643995054177" duration="22839000" />
-      <workItem from="1644091739376" duration="3011000" />
+      <workItem from="1644091739376" duration="5208000" />
+      <workItem from="1644149737383" duration="3015000" />
     </task>
     <task id="LOCAL−00001" summary=".">
       <created>1643061789034</created>
@@ -342,7 +348,13 @@
       <option name="presentableId" value="LOCAL−00040" />
       <updated>1644093730266</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL−00041" summary=".">
+      <created>1644095090383</created>
+      <option name="number" value="LOCAL−00041" />
+      <option name="presentableId" value="LOCAL−00041" />
+      <updated>1644095090383</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
