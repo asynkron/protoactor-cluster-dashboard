@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proto.Cluster.Dashboard", "Proto.Cluster.Dashboard\Proto.Cluster.Dashboard.csproj", "{C54FE72D-0748-4133-97CD-9BF946046BD6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proto.Cluster.Dashboard.Host", "Proto.Cluster.Dashboard.Host\Proto.Cluster.Dashboard.Host.csproj", "{C54FE72D-0748-4133-97CD-9BF946046BD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proto.Cluster.Dashboard", "Proto.Cluster.Dashboard\Proto.Cluster.Dashboard.csproj", "{91E71E37-34D5-4103-BCAB-6BC4F652DF03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +14,9 @@ Global
 		{C54FE72D-0748-4133-97CD-9BF946046BD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C54FE72D-0748-4133-97CD-9BF946046BD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C54FE72D-0748-4133-97CD-9BF946046BD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91E71E37-34D5-4103-BCAB-6BC4F652DF03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91E71E37-34D5-4103-BCAB-6BC4F652DF03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91E71E37-34D5-4103-BCAB-6BC4F652DF03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91E71E37-34D5-4103-BCAB-6BC4F652DF03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

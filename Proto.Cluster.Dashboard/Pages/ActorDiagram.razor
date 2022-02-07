@@ -1,4 +1,7 @@
 @page "/ActorDiagram"
+@using MudBlazor
+@using Proto.Cluster.Dashboard
+@using Proto.Cluster.Dashboard.Shared
 @using Proto.Remote
 @inject ActorSystem System
 <h3>ActorDiagram</h3>
@@ -24,7 +27,7 @@
         foreach (var member in members)
         {
             var client = GetClient(member);
-            var res =await client.ListProcessesAsync(new ListProcessesRequest() { Name = "" });
+            var res =await client.ListProcessesAsync(new ListProcessesRequest() { Pattern = "" });
             pids.AddRange(res.Pids);
         }
 

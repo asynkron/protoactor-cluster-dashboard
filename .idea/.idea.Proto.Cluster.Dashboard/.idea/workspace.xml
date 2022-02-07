@@ -9,11 +9,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2344f875-b440-492c-afac-0b4121052cf2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/ActorSystemHostedService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard.Host/Proto.Cluster.Dashboard.Host.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Extensions.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Proto.Cluster.Dashboard/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Proto.Cluster.Dashboard/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Properties/launchSettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/ActorSystemHostedService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard.Host/ActorSystemHostedService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/App.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/App.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Data/WeatherForecast.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Data/WeatherForecastService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/ActorDiagram.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/ActorDiagram.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/ClusterOverview.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/ClusterOverview.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/ClusterState.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/ClusterState.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/Error.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/Error.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/FetchData.razor" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/_Host.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/_Host.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard.Host/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard.Host/Properties/launchSettings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Proto.Cluster.Dashboard.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Proto.Cluster.Dashboard.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Shared/MainLayout.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Shared/MainLayout.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Shared/MemberCard.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Shared/MemberCard.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Shared/MemberSearch.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Shared/MemberSearch.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/TreeNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/TreeNode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/_Imports.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/_Imports.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard.Host/appsettings.Development.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard.Host/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/wwwroot/css/bootstrap/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard.Host/wwwroot/css/bootstrap/bootstrap.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/wwwroot/css/bootstrap/bootstrap.min.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard.Host/wwwroot/css/bootstrap/bootstrap.min.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/wwwroot/css/open-iconic/FONT-LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard.Host/wwwroot/css/open-iconic/FONT-LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/wwwroot/css/open-iconic/ICON-LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard.Host/wwwroot/css/open-iconic/ICON-LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/wwwroot/css/open-iconic/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard.Host/wwwroot/css/open-iconic/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/wwwroot/css/open-iconic/font/css/open-iconic-bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard.Host/wwwroot/css/open-iconic/font/css/open-iconic-bootstrap.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/wwwroot/css/open-iconic/font/fonts/open-iconic.eot" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard.Host/wwwroot/css/open-iconic/font/fonts/open-iconic.eot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/wwwroot/css/open-iconic/font/fonts/open-iconic.otf" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard.Host/wwwroot/css/open-iconic/font/fonts/open-iconic.otf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/wwwroot/css/open-iconic/font/fonts/open-iconic.svg" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard.Host/wwwroot/css/open-iconic/font/fonts/open-iconic.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/wwwroot/css/open-iconic/font/fonts/open-iconic.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard.Host/wwwroot/css/open-iconic/font/fonts/open-iconic.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/wwwroot/css/open-iconic/font/fonts/open-iconic.woff" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard.Host/wwwroot/css/open-iconic/font/fonts/open-iconic.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/wwwroot/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard.Host/wwwroot/css/site.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/wwwroot/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard.Host/wwwroot/favicon.ico" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +68,16 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/ClusterState.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/_Host.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/99cc6bf1b8d39f33e2ce6338c06608c915586ac69e9c468a62f943e75dc4/SeedExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Proto.Cluster.Dashboard/App.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/Index.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/ClusterOverview.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/Error.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/ActorDiagram.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/_Layout.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Proto.Cluster.Dashboard/TreeNode.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -61,7 +102,7 @@
   </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.Proto.Cluster.Dashboard">
     <configuration name="Proto.Cluster.Dashboard" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
-      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Proto.Cluster.Dashboard/Proto.Cluster.Dashboard.csproj" />
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Proto.Cluster.Dashboard.Host/Proto.Cluster.Dashboard.Host.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net6.0" />
       <option name="LAUNCH_PROFILE_NAME" value="Proto.Cluster.Dashboard" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
@@ -76,7 +117,7 @@
       </method>
     </configuration>
     <configuration name="Proto.Cluster.Dashboard: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
-      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Proto.Cluster.Dashboard/Proto.Cluster.Dashboard.csproj" />
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Proto.Cluster.Dashboard.Host/Proto.Cluster.Dashboard.Host.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net6.0" />
       <option name="LAUNCH_PROFILE_NAME" value="IIS Express" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
@@ -102,7 +143,8 @@
       <workItem from="1643061769545" duration="17016000" />
       <workItem from="1643219389069" duration="6416000" />
       <workItem from="1643980273736" duration="6384000" />
-      <workItem from="1644228266655" duration="2370000" />
+      <workItem from="1644228266655" duration="4164000" />
+      <workItem from="1644236716286" duration="2620000" />
     </task>
     <task id="LOCAL−00001" summary=".">
       <created>1643061789034</created>
@@ -260,7 +302,13 @@
       <option name="presentableId" value="LOCAL−00026" />
       <updated>1643985711729</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL−00027" summary="hosted service">
+      <created>1644230883836</created>
+      <option name="number" value="LOCAL−00027" />
+      <option name="presentableId" value="LOCAL−00027" />
+      <updated>1644230883836</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -289,37 +337,19 @@
     <MESSAGE value="diagram" />
     <MESSAGE value="charts" />
     <MESSAGE value="." />
-    <option name="LAST_COMMIT_MESSAGE" value="." />
+    <MESSAGE value="hosted service" />
+    <option name="LAST_COMMIT_MESSAGE" value="hosted service" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/ClusterOverview.razor</url>
-          <line>74</line>
+          <line>85</line>
           <properties documentPath="C:\Git\protoactor-cluster-dashboard\Proto.Cluster.Dashboard\Pages\ClusterOverview.razor" initialLine="47" isMultiMethodBreakpoint="true">
             <option name="multiMethodBreakpoint" value="true" />
-            <startOffsets>
-              <option value="-1" />
-            </startOffsets>
-            <endOffsets>
-              <option value="-1" />
-            </endOffsets>
           </properties>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Proto.Cluster.Dashboard/Program.cs</url>
-          <line>67</line>
-          <properties documentPath="C:\Git\protoactor-cluster-dashboard\Proto.Cluster.Dashboard\Program.cs" initialLine="80" containingFunctionPresentation="method 'ReceiveAsync'">
-            <startOffsets>
-              <option value="2070" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2107" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

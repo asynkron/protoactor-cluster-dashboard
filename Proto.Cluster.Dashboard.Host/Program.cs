@@ -1,26 +1,21 @@
+using Google.Protobuf.WellKnownTypes;
 using Proto;
 using Proto.Cluster;
-using Proto.Cluster.Identity;
 using Proto.Cluster.Partition;
-using Proto.Cluster.Testing;
 using Proto.Remote.GrpcNet;
 using MudBlazor.Services;
 using Proto.Cluster.Dashboard;
 using Proto.Cluster.Seed;
 using Proto.Remote;
-using Proto.Remote;
-
-var system = await GetSystem();
 
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddSingleton(system);
-builder.Services.AddSingleton(system.Cluster());
+var system = GetSystem();
+builder.Services.AddProtoActorDashboard(system);
 builder.Services.AddHostedService<ActorSystemHostedService>();
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton(system);
 builder.Services.AddMudServices();
 var app = builder.Build();
 
@@ -40,7 +35,7 @@ app.MapFallbackToPage("/_Host");
 
 app.Run();
 
-async Task<ActorSystem> GetSystem()
+ActorSystem GetSystem()
 {
     Proto.Log.SetLoggerFactory(
         LoggerFactory.Create(l => l.AddConsole().SetMinimumLevel(LogLevel.Information)));
@@ -49,25 +44,12 @@ async Task<ActorSystem> GetSystem()
     var provider = new SeedNodeClusterProvider();
     var actorSystem = 
         new ActorSystem(ActorSystemConfig.Setup().WithDeveloperSupervisionLogging(true))
-        .WithRemote(GrpcNetRemoteConfig.BindToAllInterfaces(advertisedHost, port).WithProtoMessages(SeedContractsReflection.Descriptor).WithProtoMessages(Empty.Descriptor.File))
+        .WithRemote(GrpcNetRemoteConfig
+            .BindToAllInterfaces(advertisedHost, port)
+            .WithProtoMessages(SeedContractsReflection.Descriptor)
+            .WithProtoMessages(Empty.Descriptor.File)
+            .WithRemoteDiagnostics(true))
         .WithCluster(ClusterConfig.Setup("MyCluster", provider, new PartitionIdentityLookup()));
 
     return actorSystem;
-}
-
-public record DummyRequest;
-
-public record DummyResponse;
-
-public class DummyActor : IActor
-{
-    public async Task ReceiveAsync(IContext context)
-    {
-        await Task.Delay(20);
-        if (context.Message is DummyRequest)
-        {
-            var id = context.Get<ClusterIdentity>();
-            context.Respond(new DummyResponse());
-        }
-    }
 }

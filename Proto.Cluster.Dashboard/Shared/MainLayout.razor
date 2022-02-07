@@ -1,13 +1,14 @@
-﻿@inherits LayoutComponentBase
+﻿@using MudBlazor
+@inherits LayoutComponentBase
 
-<PageTitle>Proto.Cluster.Dashboard</PageTitle>
+<PageTitle>Proto.Cluster.Dashboard.Host</PageTitle>
 <MudThemeProvider IsDarkMode="@_dark"/>
 <MudDialogProvider/>
 <MudSnackbarProvider/>
 
 <MudLayout>
     <MudAppBar>
-        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => ToggleDrawer())" />
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@ToggleDrawer" />
         Proto.Actor Cluster Dashboard
         <MudSpacer />
         <MudToggleIconButton @bind-Toggled="@_dark" Edge="Edge.End"

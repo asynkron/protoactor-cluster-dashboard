@@ -1,4 +1,6 @@
 @page "/ClusterState"
+@using MudBlazor
+@using Proto.Cluster.Dashboard.Shared
 @using Proto.Cluster.Gossip
 @using Proto.Remote
 @inject ActorSystem System
@@ -92,7 +94,7 @@
     private async Task SearchActors()
     {
         var client = GetClient();
-        var res = await client.ListProcessesAsync(new ListProcessesRequest() { Name = _search });
+        var res = await client.ListProcessesAsync(new ListProcessesRequest() { Pattern = _search , Type = ListProcessesMatchType.MatchPartOfString});
         _pids = res.Pids.OrderBy(p => p.Id).ToArray();
     }
 

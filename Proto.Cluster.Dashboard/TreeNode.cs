@@ -3,11 +3,11 @@ namespace Proto.Cluster.Dashboard;
 public class TreeNodeComparer : IEqualityComparer<TreeNode>
 {
     public static readonly TreeNodeComparer Instance = new();
-    public bool Equals(TreeNode one, TreeNode two)
+    public bool Equals(TreeNode? one, TreeNode? two)
     {
         // Adjust according to requirements.
         return StringComparer.InvariantCultureIgnoreCase
-            .Equals(one.Name, two.Name);
+            .Equals(one?.Name, two?.Name);
 
     }
 
@@ -21,7 +21,7 @@ public class TreeNodeComparer : IEqualityComparer<TreeNode>
 
 public record TreeNode
 {
-    public string Name { get; init; }
+    public string? Name { get; init; }
     public HashSet<TreeNode> Children { get; } = new(TreeNodeComparer.Instance);
 
     public TreeNode GetChild(string name)
