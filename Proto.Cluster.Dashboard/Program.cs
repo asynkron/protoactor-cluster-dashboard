@@ -1,22 +1,20 @@
+using Google.Protobuf.WellKnownTypes;
 using Proto;
 using Proto.Cluster;
-using Proto.Cluster.Identity;
 using Proto.Cluster.Partition;
-using Proto.Cluster.Testing;
 using Proto.Remote.GrpcNet;
 using MudBlazor.Services;
+using Proto.Cluster.Dashboard;
+using Proto.Cluster.Seed;
+using Proto.Remote;
 
-var agent = new InMemAgent();
-var lookup = new PartitionIdentityLookup();
-var system = await GetSystem(agent, lookup);
+var system = await GetSystem();
 
-for (int i = 0; i < 3; i++)
-{
-    GetSystem(agent, lookup);    
-}
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddSingleton(system);
+builder.Services.AddSingleton(system.Cluster());
+builder.Services.AddHostedService<ActorSystemHostedService>();
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
@@ -37,33 +35,21 @@ app.UseStaticFiles();
 app.UseRouting();
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
-_ = Task.Run(async () =>
-{
-    var rnd = new Random();
-    while (true)
-    {
-        await Task.Delay(10);
-        await system.Cluster()
-            .RequestAsync<DummyResponse>("id" + rnd.Next(1, 1000), "SomeKind", new DummyRequest(),
-                CancellationTokens.FromSeconds(5));
 
-        await system.Cluster()
-            .RequestAsync<DummyResponse>("id" + rnd.Next(1, 200), "SomeOtherKind", new DummyRequest(),
-                CancellationTokens.FromSeconds(5));
-    }
-});
 app.Run();
 
-async Task<ActorSystem> GetSystem(InMemAgent agent, IIdentityLookup identityLookup)
+async Task<ActorSystem> GetSystem()
 {
-    var props = Props.FromProducer(() => new DummyActor());
-    var provider = new TestProvider(new TestProviderOptions(), agent);
-    var actorSystem = new ActorSystem()
-        .WithRemote(GrpcNetRemoteConfig.BindToLocalhost())
-        .WithCluster(ClusterConfig.Setup("cluster", provider, identityLookup)
-            .WithClusterKind("SomeKind", props)
-            .WithClusterKind("SomeOtherKind", props));
-    await actorSystem.Cluster().StartMemberAsync();
+    Proto.Log.SetLoggerFactory(
+        LoggerFactory.Create(l => l.AddConsole().SetMinimumLevel(LogLevel.Information)));
+    var port = 0;
+    var advertisedHost = "localhost";
+    var provider = new SeedNodeClusterProvider();
+    var actorSystem = 
+        new ActorSystem(ActorSystemConfig.Setup().WithDeveloperSupervisionLogging(true))
+        .WithRemote(GrpcNetRemoteConfig.BindToAllInterfaces(advertisedHost, port).WithProtoMessages(SeedContractsReflection.Descriptor).WithProtoMessages(Empty.Descriptor.File))
+        .WithCluster(ClusterConfig.Setup("MyCluster", provider, new PartitionIdentityLookup()));
+
     return actorSystem;
 }
 

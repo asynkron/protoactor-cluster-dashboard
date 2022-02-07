@@ -8,9 +8,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2344f875-b440-492c-afac-0b4121052cf2" name="Changes" comment=".">
+    <list default="true" id="2344f875-b440-492c-afac-0b4121052cf2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/ActorSystemHostedService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Proto.Cluster.Dashboard/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Proto.Cluster.Dashboard/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/ClusterOverview.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Pages/ClusterOverview.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Properties/launchSettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Proto.Cluster.Dashboard.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Proto.Cluster.Dashboard/Proto.Cluster.Dashboard.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,8 +36,7 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Git/protoactor-cluster-dashboard/Proto.Cluster.Dashboard/Pages/ClusterOverview.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Git/protoactor-cluster-dashboard/Proto.Cluster.Dashboard/Pages/ClusterOverview.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/99cc6bf1b8d39f33e2ce6338c06608c915586ac69e9c468a62f943e75dc4/SeedExtensions.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -99,7 +101,8 @@
       <updated>1643061766138</updated>
       <workItem from="1643061769545" duration="17016000" />
       <workItem from="1643219389069" duration="6416000" />
-      <workItem from="1643980273736" duration="5289000" />
+      <workItem from="1643980273736" duration="6384000" />
+      <workItem from="1644228266655" duration="2370000" />
     </task>
     <task id="LOCAL−00001" summary=".">
       <created>1643061789034</created>
@@ -251,7 +254,13 @@
       <option name="presentableId" value="LOCAL−00025" />
       <updated>1643985250826</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL−00026" summary=".">
+      <created>1643985711729</created>
+      <option name="number" value="LOCAL−00026" />
+      <option name="presentableId" value="LOCAL−00026" />
+      <updated>1643985711729</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -301,13 +310,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Proto.Cluster.Dashboard/Program.cs</url>
-          <line>81</line>
+          <line>67</line>
           <properties documentPath="C:\Git\protoactor-cluster-dashboard\Proto.Cluster.Dashboard\Program.cs" initialLine="80" containingFunctionPresentation="method 'ReceiveAsync'">
             <startOffsets>
-              <option value="2398" />
+              <option value="2070" />
             </startOffsets>
             <endOffsets>
-              <option value="2435" />
+              <option value="2107" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="2" />
