@@ -6,13 +6,9 @@
 </InfoBlock>
 @foreach (var m in State.Members)
 {
-    <InfoBlock>
-        <dib>
-            <b>Member @m.Id</b>
-        </dib>
-        <div>Address: @m.Address</div>
-        <div>Kinds: @string.Join(", ", m.Kinds) </div>
-    </InfoBlock>
+    <div class="py-2">
+    <MemberCard Member="m"></MemberCard>
+    </div>
 }
 
 @code {

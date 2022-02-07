@@ -1,28 +1,31 @@
 ﻿@inherits LayoutComponentBase
 
 <PageTitle>Proto.Cluster.Dashboard</PageTitle>
-<MudThemeProvider IsDarkMode="true"/>
+<MudThemeProvider IsDarkMode="@_dark"/>
 <MudDialogProvider/>
 <MudSnackbarProvider/>
 
 <MudLayout>
     <MudAppBar>
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => ToggleDrawer())" />
-        My Application
+        Proto.Actor Cluster Dashboard
+        <MudSpacer />
+        <MudToggleIconButton @bind-Toggled="@_dark" Edge="Edge.End"
+                             Icon="@Icons.Material.Filled.DarkMode" Color="@Color.Info" Title="Dark"
+                             ToggledIcon="@Icons.Material.Filled.LightMode" ToggledColor="@Color.Warning" ToggledTitle="Light"/>
     </MudAppBar>
     <MudDrawer @bind-Open="@_open" ClipMode="DrawerClipMode.Always" Elevation="2"  >
          <NavMenu/>
     </MudDrawer>
     <MudMainContent >
-        <MudContainer Class="pt-4">
         @Body
-        </MudContainer>
     </MudMainContent>
 </MudLayout>
 
 @code
 {
 
+    bool _dark = true;
     bool _open = true;
 
     void ToggleDrawer()
